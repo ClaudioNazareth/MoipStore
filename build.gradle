@@ -1,0 +1,63 @@
+group 'br.com.moipstore'
+version '1.0-SNAPSHOT'
+
+buildscript {
+
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven { url 'http://repo.spring.io/snapshot' }
+        maven { url 'http://repo.spring.io/milestone' }
+    }
+    dependencies {
+        //Configuration of StringBoot 2
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.0.0.BUILD-SNAPSHOT'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'org.springframework.boot'
+
+//Java 8
+sourceCompatibility = 1.8
+
+//Configuration to using embedded Mongodb when system startup
+jar {
+    baseName = 'gs-accessing-data-mongodb'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile("org.springframework.boot:spring-boot-starter-web")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+    compile("org.springframework.boot:spring-boot-starter-data-rest")
+    compile("org.springframework.boot:spring-boot-starter-hateoas")
+    compile group: 'de.flapdoodle.embed', name: 'de.flapdoodle.embed.mongo', version: '1.50.5'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest'
+    testCompile("com.jayway.jsonpath:json-path")
+}
+
+//Configuration of Gradle Wrapper
+task wrapper (type: Wrapper){
+    gradleVersion = '3.3'
+}
+
+
+//Configuration to deploy on Heroku
+task copyToLib(type: Copy) {
+    doLast {
+        into "$buildDir/lib"
+        from(configurations.compile)
+    }
+}
+
