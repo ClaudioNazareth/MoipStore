@@ -6,7 +6,7 @@
 (function () {
     'use strict';
 
-    angular.module('moipstore.ecommerce', [
+    angular.module('moipstore.ecommerce.cart', [
         'ui.router',                    // Routing
         'oc.lazyLoad',                  // ocLazyLoad
         'ui.bootstrap'                  // Ui Bootstrap

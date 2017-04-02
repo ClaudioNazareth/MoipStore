@@ -7,7 +7,7 @@
     'use strict';
 
     // factory
-    angular.module('moipstore.ecommerce')
+    angular.module('moipstore.ecommerce.product')
         .factory('EcommerceProductService', EcommerceProductService);
 
     EcommerceProductService.$inject = ['$http'];

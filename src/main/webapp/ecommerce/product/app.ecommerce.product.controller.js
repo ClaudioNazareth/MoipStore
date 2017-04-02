@@ -6,7 +6,7 @@
 (function () {
     'use strict';
 
-    angular.module('moipstore.ecommerce')
+    angular.module('moipstore.ecommerce.product')
         .controller('EcommerceProductController', EcommerceProductController);
 
     EcommerceProductController.$inject = ['EcommerceProductService'];

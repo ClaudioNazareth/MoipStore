@@ -54,7 +54,7 @@
 
     }
 
-    angular.module('moipstore.ecommerce')
+    angular.module('moipstore.ecommerce.product')
         .config(config)
         .run(function($rootScope, $state) {
             $rootScope.$state = $state;
