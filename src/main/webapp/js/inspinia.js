@@ -1,6 +1,6 @@
 /**
- * INSPINIA - Responsive Admin Theme
- * 2.6.2
+ * MoipStore - Responsive Shopping store
+ * 1.0
  *
  * Custom scripts
  */

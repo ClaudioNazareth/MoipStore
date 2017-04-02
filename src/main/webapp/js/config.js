@@ -1,13 +1,13 @@
 /**
- * INSPINIA - Responsive Admin Theme
+ * MoipStore - Responsive Shopping store
  *
- * Inspinia theme use AngularUI Router to manage routing and views
+ * MoipStore theme use AngularUI Router to manage routing and views
  * Each view are defined as state.
  * Initial there are written state for all view in theme.
  *
  */
 function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
-    $urlRouterProvider.otherwise("/index/main");
+    $urlRouterProvider.otherwise("ecommerce/product_details");
 
     $ocLazyLoadProvider.config({
         // Set to true if you want to see what and when is dynamically loaded
@@ -33,7 +33,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
         })
 }
 angular
-    .module('inspinia')
+    .module('moipstore')
     .config(config)
     .run(function($rootScope, $state) {
         $rootScope.$state = $state;

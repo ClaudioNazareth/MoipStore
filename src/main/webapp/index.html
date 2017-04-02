@@ -1,11 +1,11 @@
 <!--
-* INSPINIA - Responsive Admin Theme
-* Version 2.7
+* MoipStore - Responsive Shopping store
+* Version 1.0
 *
 -->
 
 <!DOCTYPE html>
-<html ng-app="inspinia">
+<html ng-app="moipstore">
 
 <head>
 
@@ -30,7 +30,7 @@
 </head>
 
 <!-- ControllerAs syntax -->
-<!-- Main controller with serveral data used in Inspinia theme on diferent view -->
+<!-- Main controller with serveral data used in MoipStore theme on diferent view -->
 <body ng-controller="MainCtrl as main">
 
 <!-- Main view  -->
@@ -59,8 +59,11 @@
 <script src="js/ui-router/angular-ui-router.min.js"></script>
 <script src="js/bootstrap/ui-bootstrap-tpls-1.1.2.min.js"></script>
 
-
-<!-- Anglar App Script -->
+<!-- Angular App Script -->
+<script src="ecommerce/product/app.ecommerce.product.module.js"></script>
+<script src="ecommerce/product/app.ecommerce.product.config.js"></script>
+<script src="ecommerce/product/app.ecommerce.product.controller.js"></script>
+<script src="ecommerce/product/app.ecommerce.product.service.js"></script>
 <script src="js/app.js"></script>
 <script src="js/config.js"></script>
 <script src="js/directives.js"></script>

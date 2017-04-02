@@ -1,15 +1,14 @@
 /**
  * MoipStore - Responsive Shopping store
+ * Separate module for dealing with cart - e-commerce
  */
+
 (function () {
     'use strict';
 
-    angular.module('moipstore', [
+    angular.module('moipstore.ecommerce', [
         'ui.router',                    // Routing
         'oc.lazyLoad',                  // ocLazyLoad
-        'ui.bootstrap',                 // Ui Bootstrap
-        'moipstore.ecommerce',          // E-commerce module
-    ])
-
+        'ui.bootstrap'                  // Ui Bootstrap
+    ]);
 })();
-
