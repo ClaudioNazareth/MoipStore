@@ -1,6 +1,6 @@
 /**
  * MoipStore - Responsive Shopping store
- * Separate module for dealing with cart - e-commerce
+ * Separate module for dealing with cart | e-commerce
  */
 
 (function () {

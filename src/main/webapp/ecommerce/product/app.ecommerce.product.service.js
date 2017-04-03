@@ -19,6 +19,8 @@
         };
         return service;
 
+        ////////////
+
         function findProducts(){
             var req = {
                 method: 'GET',

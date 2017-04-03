@@ -8,7 +8,8 @@
         'ui.router',                    // Routing
         'oc.lazyLoad',                  // ocLazyLoad
         'ui.bootstrap',                 // Ui Bootstrap
-        'moipstore.ecommerce.product',          // E-commerce module
+        'moipstore.ecommerce.product',  // Product e-commerce module
+        'moipstore.ecommerce.cart',     // Cart e-commerce module
     ])
 
 })();

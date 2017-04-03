@@ -1,0 +1,149 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>E-commerce shoping cart</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a>E-commerce</a>
+            </li>
+            <li class="active">
+                <strong>Shoping cart</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight" ng-controller="EcommerceCartController as ctrl">
+
+
+    <div class="row">
+        <div class="col-md-9">
+
+            <div class="ibox">
+                <div class="ibox-title">
+                    <span class="pull-right">(<strong>{{ctrl.selectedProducts.length}}</strong>) items</span>
+                    <h5>Items in your cart</h5>
+                </div>
+                <div class="ibox-content" ng-repeat="product in ctrl.selectedProducts">
+
+
+                    <div class="table-responsive">
+                        <table class="table shoping-cart-table">
+
+                            <tbody>
+                            <tr>
+                                <td width="90">
+                                    <div class="cart-product-imitation">
+                                        image
+                                    </div>
+                                </td>
+                                <td class="desc">
+                                    <h3>
+                                        <a href="#" class="text-navy">
+                                            {{product.name}}
+                                        </a>
+                                    </h3>
+                                    <p class="small">
+                                        {{product.description}}
+                                    </p>
+                                    <dl class="small m-b-none">
+                                        <dt>Description lists</dt>
+                                        <dd>A description list is perfect for defining terms.</dd>
+                                    </dl>
+
+                                    <div class="m-t-sm" ng-click="ctrl.removeProduct(product)">
+                                        <a class="text-muted"><i class="fa fa-trash"></i> Remove item</a>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    {{product.price | currency}}
+
+                                </td>
+                                <td width="65">
+                                    <input type="text" class="form-control" ng-model="product.quantity"
+                                           ng-change="ctrl.calculateAmount()">
+                                </td>
+                                <td>
+                                    <h4>
+                                        {{product.price * product.quantity | currency}}
+                                    </h4>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+
+                <div class="ibox-content">
+
+                    <button class="btn btn-primary pull-right"><i class="fa fa fa-shopping-cart"></i> Checkout</button>
+                    <button class="btn btn-white" ui-sref="ecommerce.product_details"><i class="fa fa-arrow-left"></i>
+                        Continue shopping
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-3">
+
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Cart Summary</h5>
+                </div>
+
+                <div class="ibox-content">
+                    <label class="control-label" for="cupon_id">Coupon</label>
+                    <div class="input-group" id="cupon_id">
+                        <input placeholder="Insert your coupon number" type="text" class="form-control">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-primary" ng-click="ctrl.applyCoupon()">Apply
+                                </button>
+                            </span>
+                    </div>
+                    <br>
+                    <span>
+                                Total
+                            </span>
+                    <h2 class="font-bold">
+                        {{ctrl.amount | currency}}
+                    </h2>
+
+                    <hr/>
+                    <span class="text-muted small">
+                                *For United States, France and Germany applicable sales tax will be applied
+                            </span>
+                    <div class="m-t-sm">
+                        <div class="btn-group">
+                            <a class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> Checkout</a>
+                            <a href="#" class="btn btn-white btn-sm"> Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Support</h5>
+                </div>
+                <div class="ibox-content text-center">
+
+
+                    <h3><i class="fa fa-phone"></i> 11 96830-6554</h3>
+                    <span class="small">
+                                Please contact with us if you have any questions. We are avalible 24h.
+                            </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

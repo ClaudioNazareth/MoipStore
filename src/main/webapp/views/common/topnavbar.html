@@ -8,15 +8,10 @@
                 </div>
             </form>
         </div>
-        <ul class="nav navbar-top-links navbar-right">
+        <ul class="nav navbar-top-links navbar-right" ui-sref="ecommerce_cart.detail">
             <li>
-                <a class="count-info" href uib-dropdown-toggle>
-                    <i id="cart" class="fa fa-shopping-cart" style="font-size: 25px"></i> <span class="label label-warning">1</span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <i class="fa fa-sign-out"></i> Log out
+                <a class="count-info" ng-controller="EcommerceCartController as ctrl">
+                    <i id="cart" class="fa fa-shopping-cart" style="font-size: 30px"></i> <span class="label label-warning">{{ctrl.totalItems}}</span>
                 </a>
             </li>
         </ul>
