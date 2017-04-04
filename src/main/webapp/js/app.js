@@ -10,6 +10,7 @@
         'ui.bootstrap',                 // Ui Bootstrap
         'moipstore.ecommerce.product',  // Product e-commerce module
         'moipstore.ecommerce.cart',     // Cart e-commerce module
+        'moipstore.ecommerce.checkout'  // Checkout e-commerce module
     ])
 
 })();
