@@ -9,9 +9,9 @@
     angular.module('moipstore.ecommerce.checkout')
         .controller('EcommerceCheckoutController', EcommerceCheckoutController);
 
-    EcommerceCheckoutController.$inject = ['$scope','EcommerceCartService'];
+    EcommerceCheckoutController.$inject = ['$scope','EcommerceCartService', 'EcommerceCheckoutService'];
 
-    function EcommerceCheckoutController($scope, EcommerceCartService) {
+    function EcommerceCheckoutController($scope, EcommerceCartService, EcommerceCheckoutService) {
         var ctrl = this;
 
         ctrl.amount = 0;
@@ -23,6 +23,7 @@
         ctrl.cardExpirationYear = null;
         ctrl.cardName = null;
         ctrl.loading = false;
+
 
         ctrl.makePayment = makePayment;
 
@@ -48,7 +49,24 @@
 
             if( cc.isValid()){
                 ctrl.loading = true;
-                alert(cc.hash())
+                var itens =[];
+                ctrl.selectedProducts.forEach(function (selectedProduct) {
+                    var item = {productCode : selectedProduct.code , quantity : selectedProduct.quantity};
+                    itens.push(item);
+                });
+                var orderRequest = {
+                        customerId : "cust",
+                        ShippingAddressId: "order",
+                        items: itens
+                };
+                EcommerceCheckoutService.createOrder(orderRequest).then(function (response) {
+                    var paymentRequest = {orderId : response.headers('Location').split("order/")[1]};
+                    EcommerceCheckoutService.createPayment(paymentRequest).then(function (response) {
+                        ctrl.loading = false;
+                        alert(response.headers('Location').split("payment/")[1])
+                    });
+                });
+
             } else {
                 alert('Invalid credit card. Verify parameters: number, cvc, expiration Month, expiration Year');
                 return false; // Don't submit the form
