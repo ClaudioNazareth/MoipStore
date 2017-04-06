@@ -1,6 +1,7 @@
 /**
  * MoipStore - Responsive Shopping store
  */
+
 (function () {
     'use strict';
 
