@@ -18,28 +18,20 @@
     </div>
 </div>
 <div class="wrapper wrapper-content animated fadeInRight" ng-controller="EcommerceCartController as ctrl">
-
-
     <div class="row">
         <div class="col-md-9">
-
             <div class="ibox">
                 <div class="ibox-title">
-                    <span class="pull-right">(<strong>{{ctrl.selectedProducts.length}}</strong>) items</span>
+                    <span class="pull-right">(<strong>{{ctrl.totalItems}}</strong>) items</span>
                     <h5>Items in your cart</h5>
                 </div>
                 <div class="ibox-content" ng-repeat="product in ctrl.selectedProducts">
-
-
                     <div class="table-responsive">
                         <table class="table shoping-cart-table">
-
                             <tbody>
                             <tr>
                                 <td width="90">
-                                    <div class="cart-product-imitation">
-                                        image
-                                    </div>
+                                   <img src="{{product.imageIcon}}" class="img-rounded img-md"/>
                                 </td>
                                 <td class="desc">
                                     <h3>
@@ -51,22 +43,19 @@
                                         {{product.description}}
                                     </p>
                                     <dl class="small m-b-none">
-                                        <dt>Description lists</dt>
-                                        <dd>A description list is perfect for defining terms.</dd>
+                                        <!--<dt>Slogan</dt>-->
+                                        <dd>{{product.slogan}}</dd>
                                     </dl>
 
                                     <div class="m-t-sm" ng-click="ctrl.removeProduct(product)">
                                         <a class="text-muted"><i class="fa fa-trash"></i> Remove item</a>
                                     </div>
                                 </td>
-
                                 <td>
                                     {{product.price | currency}}
-
                                 </td>
-                                <td width="65">
-                                    <input type="text" class="form-control" ng-model="product.quantity"
-                                           ng-change="ctrl.calculateAmount()">
+                                <td width="85">
+                                    <input type="number" min="1" class="form-control" ng-model="product.quantity" ng-change="ctrl.calculateAmount()">
                                 </td>
                                 <td>
                                     <h4>
@@ -77,49 +66,30 @@
                             </tbody>
                         </table>
                     </div>
-
                 </div>
-
-
                 <div class="ibox-content">
 
                     <button class="btn btn-primary pull-right" ui-sref="ecommerce_checkout.detail"><i class="fa fa fa-shopping-cart"></i> Checkout</button>
                     <button class="btn btn-white" ui-sref="ecommerce.product_details"><i class="fa fa-arrow-left"></i>
                         Continue shopping
                     </button>
-
                 </div>
             </div>
-
         </div>
         <div class="col-md-3">
-
             <div class="ibox">
                 <div class="ibox-title">
                     <h5>Cart Summary</h5>
                 </div>
-
                 <div class="ibox-content">
-                    <label class="control-label" for="cupon_id">Coupon</label>
-                    <div class="input-group" id="cupon_id">
-                        <input placeholder="Insert your coupon number" type="text" class="form-control">
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-primary" ng-click="ctrl.applyCoupon()">Apply
-                                </button>
-                            </span>
-                    </div>
-                    <br>
-                    <span>
-                                Total
-                            </span>
+                    <span> Total </span>
                     <h2 class="font-bold">
                         {{ctrl.amount | currency}}
                     </h2>
-
                     <hr/>
                     <span class="text-muted small">
                                 *For United States, France and Germany applicable sales tax will be applied
-                            </span>
+                    </span>
                     <div class="m-t-sm">
                         <div class="btn-group">
                             <a class="btn btn-primary btn-sm" ui-sref="ecommerce_checkout.detail"><i class="fa fa-shopping-cart"></i> Checkout</a>
@@ -128,22 +98,17 @@
                     </div>
                 </div>
             </div>
-
             <div class="ibox">
                 <div class="ibox-title">
                     <h5>Support</h5>
                 </div>
                 <div class="ibox-content text-center">
-
-
                     <h3><i class="fa fa-phone"></i> 11 96830-6554</h3>
                     <span class="small">
                                 Please contact with us if you have any questions. We are avalible 24h.
-                            </span>
+                    </span>
                 </div>
             </div>
         </div>
     </div>
-
-
 </div>

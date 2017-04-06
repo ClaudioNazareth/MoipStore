@@ -41,11 +41,21 @@ public class Product {
 
     private List<String> imageLinks = new ArrayList<>();
 
-    public Product(String code, String name, String description, BigDecimal price) {
+    private String imageIcon;
+
+    public Product(String id, String code, String name, String slogan, String description, String info, String dimensions, String media, String manufacturer, BigDecimal price, List<String> imageLinks, String imageIcon) {
+        this.id = id;
         this.code = code;
         this.name = name;
+        this.slogan = slogan;
         this.description = description;
+        this.info = info;
+        this.dimensions = dimensions;
+        this.media = media;
+        this.manufacturer = manufacturer;
         this.price = price;
+        this.imageLinks = imageLinks;
+        this.imageIcon = imageIcon;
     }
 
     Product(){
@@ -139,6 +149,14 @@ public class Product {
         this.imageLinks = imageLinks;
     }
 
+    public String getImageIcon() {
+        return imageIcon;
+    }
+
+    public void setImageIcon(String imageIcon) {
+        this.imageIcon = imageIcon;
+    }
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Product{");
@@ -152,7 +170,6 @@ public class Product {
             sb.append(", media='").append(media).append('\'');
             sb.append(", manufacturer='").append(manufacturer).append('\'');
             sb.append(", price=").append(price);
-            sb.append(", imageLinks=").append(imageLinks);
             sb.append('}');
         return sb.toString();
     }

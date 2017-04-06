@@ -1,6 +1,7 @@
 /**
  * MoipStore - Responsive Shopping store
  * Separate config for dealing with checkout | e-commerce
+ * The script was develop following this guide of best practices https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md
  */
 
 (function () {
@@ -19,7 +20,7 @@
                 abstract: true,
                 url: "/ecommerce",
                 templateUrl: "views/common/content.html",
-                resolve: {
+                resolve: { // Load on demand plugins
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
                             {
@@ -28,6 +29,13 @@
                             {
                                 name: 'ui.footable',
                                 files: ['js/plugins/footable/angular-footable.js']
+                            },
+                            {
+                                files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                            },
+                            {
+                                name: 'oitozero.ngSweetAlert',
+                                files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
                             }
                         ]);
                     }

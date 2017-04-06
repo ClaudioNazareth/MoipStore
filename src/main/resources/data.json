@@ -10,6 +10,7 @@
     "media" : "Console",
     "manufacturer" : "Sony",
     "imageLinks" :["http://images.designntrend.com/data/images/full/93760/ps4-logo.jpg?w=780", "http://www.meups4.com.br/wp-content/uploads/2017/02/PS4.jpg", "http://videogamemais.com.br/wp-content/uploads/2013/10/ps4.jpg"],
+    "imageIcon" : "https://rsesporte.com/wp-content/uploads/2016/09/PS4-Sales-730x411.jpg",
     "price" : "399.01"},
 
   { "_class" : "br.com.moipstore.model.Product",
@@ -22,7 +23,7 @@
     "media" : "Console",
     "manufacturer" : "Microsoft",
     "imageLinks" : ["http://www.gizmodo.jp/images/2015/08/150805nxboxup.jpg", "http://s2.glbimg.com/mFtHQ709Pedpimh9AeJ5m3h1FkQ=/695x0/s.glbimg.com/po/tt2/f/original/2014/11/14/xbox-one.jpg", "https://whatsyourtagblog.files.wordpress.com/2013/08/xbox-one-controller-021.jpg?w=800"],
-
+    "imageIcon" : "http://cdn.mos.cms.futurecdn.net/9031a5c33a25d2609d046612e4941fb5-1200-80.jpg",
     "price":"350.99"},
 
   { "_class" : "br.com.moipstore.model.Product",
@@ -35,6 +36,6 @@
     "media" : "Console",
     "manufacturer" : "Nintendo",
     "imageLinks" : ["http://media.nintendo.com/nintendo/cocoon/switch-static-pages/switch/etRgxnAu0zRX4bmWnt9K628wG7YQUI6t/images/switch/home/bundle1.jpg", "https://jovemnerd.com.br/wp-content/uploads/2017/01/nintendo-switch2-760x428.jpg", "https://cnet1.cbsistatic.com/img/kt-ppokmtSYCUP9d6WstAaEFuoQ=/724x407/2017/02/23/5bf20b56-a1a7-4587-868f-f9f848dbc7bf/nintendo-switch-console-4923.jpg"],
-
+    "imageIcon" : "http://media.nintendo.com/nintendo/bin/ycRDJrY9OQ-fk2OnJlUtcV4GMvWdP46p/Gw5ScAwTh80PBEnAdG7h3xwB0Ikd5Jfl.jpg",
     "price":"299.99"}
 ]

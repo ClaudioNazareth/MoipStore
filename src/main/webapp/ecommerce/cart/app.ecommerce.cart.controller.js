@@ -1,6 +1,7 @@
 /**
  * MoipStore - Responsive Shopping store
  * Separate controller for dealing with cart | e-commerce
+ * The script was develop following this guide of best practices https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md
  */
 
 (function () {
@@ -9,24 +10,23 @@
     angular.module('moipstore.ecommerce.cart')
         .controller('EcommerceCartController', EcommerceCartController);
 
-    EcommerceCartController.$inject = ['$scope','EcommerceCartService'];
+    EcommerceCartController.$inject = ['$scope','EcommerceCartService', 'EcommercePaymentService'];
 
-    function EcommerceCartController($scope, EcommerceCartService) {
+    function EcommerceCartController($scope, EcommerceCartService, EcommercePaymentService) {
         var ctrl = this;
         ctrl.totalItems = 0;
         ctrl.amount = 0;
         ctrl.selectedProducts = [];
-        ctrl.shouldApplyCoupon = false;
+        ctrl.shouldApplyCoupon= false;
 
         ctrl.calculateAmount = calculateAmount;
         ctrl.removeProduct = removeProduct;
-        ctrl.applyCoupon = applyCoupon;
-
-        activate();
 
         $scope.$on('addProduct', function(event, args) {
             calculateTotalItems();
         });
+
+        activate();
 
         function activate() {
             ctrl.selectedProducts = EcommerceCartService.getSelectedProducts();
@@ -35,7 +35,8 @@
         }
         
         function calculateAmount() {
-            ctrl.amount = EcommerceCartService.calculateAmount(ctrl.selectedProducts, ctrl.shouldApplyCoupon);
+            ctrl.amount = EcommercePaymentService.calculateAmount(ctrl.selectedProducts, ctrl.shouldApplyCoupon);
+            calculateTotalItems();
         }
 
         function calculateTotalItems() {
@@ -49,11 +50,6 @@
             EcommerceCartService.removeProductFromCart(product);
             ctrl.selectedProducts = EcommerceCartService.getSelectedProducts();
             calculateTotalItems();
-            calculateAmount();        
-        }
-        
-        function applyCoupon() {
-            ctrl.shouldApplyCoupon = true;
             calculateAmount();
         }
     }

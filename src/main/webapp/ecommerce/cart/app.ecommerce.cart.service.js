@@ -1,6 +1,7 @@
 /**
  * MoipStore - Responsive Shopping store
  * Separate module for dealing with cart | e-commerce
+ * The script was develop following this guide of best practices https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md
  */
 
 (function () {
@@ -10,9 +11,9 @@
     angular.module('moipstore.ecommerce.cart')
         .factory('EcommerceCartService', EcommerceCartService);
 
-    EcommerceCartService.$inject = ['$http', '$window'];
+    EcommerceCartService.$inject = ['LocalStorageService'];
 
-    function EcommerceCartService($http, $window) {
+    function EcommerceCartService( LocalStorageService) {
         var service = this;
         service.selectedProducts = [];
 
@@ -20,35 +21,38 @@
             addProductToCart:addProductToCart,
             getSelectedProducts : getSelectedProducts,
             removeProductFromCart : removeProductFromCart,
-            calculateAmount : calculateAmount
         };
         return service;
 
         ////////////
 
+        /**
+         * Add product to cart, if it is already there increment the quantity
+         * @param product
+         */
         function addProductToCart(product) {
-
+            var isProductInCart = false;
             if(service.selectedProducts.length > 0) {
-                var found = false;
                 service.selectedProducts.forEach(function (selectedProduct) {
                     if (product.code === selectedProduct.code) {
                         selectedProduct.quantity++;
-                        found = true;
+                        isProductInCart = true;
                     }
                 });
-                if(!found){
-                    product.quantity = 1;
-                    service.selectedProducts.push(product);
-                }
-            }else{
+            }
+            if(!isProductInCart){
                 product.quantity = 1;
                 service.selectedProducts.push(product);
             }
-            $window.localStorage['selected-products'] = angular.toJson(service.selectedProducts);
+            LocalStorageService.storeData('selected-products', service.selectedProducts);
         }
-        
+
+        /**
+         * Return all products in cart
+         * @returns {Array|Product}
+         */
         function getSelectedProducts() {
-            service.selectedProducts = angular.fromJson($window.localStorage['selected-products']);
+            service.selectedProducts =LocalStorageService.getStoredData('selected-products');
             if(service.selectedProducts === undefined){
                 service.selectedProducts = [];
             }
@@ -64,21 +68,8 @@
             });
             if (index != -1) {
                 service.selectedProducts.splice(index, 1);
-                $window.localStorage['selected-products'] = angular.toJson(service.selectedProducts);
+                LocalStorageService.storeData('selected-products', service.selectedProducts);
             }
-        }
-
-        function calculateAmount(selectedProducts, shouldApplyCoupon) {
-            service.selectedProducts =  selectedProducts;
-            $window.localStorage['selected-products'] = angular.toJson(service.selectedProducts);
-            var amount = 0;
-            service.selectedProducts.forEach(function (selectedProduct) {
-                amount += (selectedProduct.quantity * selectedProduct.price);
-            });
-            if(shouldApplyCoupon){
-                amount *= 0.95;
-            }
-            return amount;
         }
     }
 

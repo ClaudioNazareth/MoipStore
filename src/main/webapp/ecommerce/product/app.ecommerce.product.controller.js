@@ -23,12 +23,12 @@
         activate();
 
         function activate() {
-            EcommerceProductService.findProducts().then(returnSuccess, returnError);
+            EcommerceProductService.findProducts().then(onSuccess, onError);
         }
-        function returnSuccess(response) {
+        function onSuccess(response) {
             ctrl.products = response;
         }
-        function returnError(error) {
+        function onError(error) {
             SweetAlert.swal({
                 title: "Error",
                 text: "There was an error fetching the products"

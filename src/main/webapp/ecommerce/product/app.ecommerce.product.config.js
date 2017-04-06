@@ -20,7 +20,7 @@
                 abstract: true,
                 url: "/ecommerce",
                 templateUrl: "views/common/content.html",
-                resolve: {
+                resolve: { // Load on demand plugins
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
                             {
