@@ -20,16 +20,16 @@ plugins {
     id 'java'
     id 'war'
 }
-jar {
-    baseName = 'myproject'
-    version =  '0.0.1-SNAPSHOT'
-}
+//jar {
+//    baseName = 'myproject'
+//    version =  '0.0.1-SNAPSHOT'
+//}
 
 
 //apply plugin: 'java'
 //apply plugin: 'war'
 //apply plugin: 'org.springframework.boot'
-//apply plugin: 'io.spring.dependency-managemen'
+
 
 
 //Java 8
