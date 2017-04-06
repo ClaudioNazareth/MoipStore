@@ -1,6 +1,7 @@
 /**
  * MoipStore - Responsive Shopping store
  * Separate module for dealing with checkout | e-commerce
+ * The script was develop following this guide of best practices https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md
  */
 
 (function () {
@@ -15,8 +16,7 @@
     function EcommerceCheckoutService($http) {
 
         var service = {
-            createOrder:createOrder,
-            createPayment : createPayment
+            createOrder:createOrder
         };
         return service;
 
@@ -36,28 +36,6 @@
             function returnSuccess(response) {
                 return response;
             }
-            function getError(error) {
-                //Implementar looger
-            }
-        }
-
-        function createPayment(paymentRequest) {
-            var req = {
-                method: 'POST',
-                url: '/api/payment',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                data: paymentRequest
-            };
-            return $http(req)
-                .then(returnSuccess)
-                .catch(getError);
-
-            function returnSuccess(response) {
-                return response;
-            }
-
             function getError(error) {
                 //Implementar looger
             }

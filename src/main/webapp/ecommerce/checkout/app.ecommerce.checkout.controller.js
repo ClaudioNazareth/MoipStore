@@ -1,6 +1,7 @@
 /**
  * MoipStore - Responsive Shopping store
  * Separate controller for dealing with Checkout | e-commerce
+ * The script was develop following this guide of best practices https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md
  */
 
 (function () {
@@ -9,9 +10,9 @@
     angular.module('moipstore.ecommerce.checkout')
         .controller('EcommerceCheckoutController', EcommerceCheckoutController);
 
-    EcommerceCheckoutController.$inject = ['$scope','EcommerceCartService', 'EcommerceCheckoutService'];
+    EcommerceCheckoutController.$inject = ['$scope','EcommerceCartService', 'EcommerceCheckoutService', 'EcommercePaymentService', 'SweetAlert'];
 
-    function EcommerceCheckoutController($scope, EcommerceCartService, EcommerceCheckoutService) {
+    function EcommerceCheckoutController($scope, EcommerceCartService, EcommerceCheckoutService, EcommercePaymentService, SweetAlert) {
         var ctrl = this;
 
         ctrl.amount = 0;
@@ -23,9 +24,11 @@
         ctrl.cardExpirationYear = null;
         ctrl.cardName = null;
         ctrl.loading = false;
+        ctrl.coupon = null;
 
 
         ctrl.makePayment = makePayment;
+        ctrl.applyCoupon = applyCoupon;
 
         activate();
 
@@ -35,7 +38,17 @@
         }
 
         function calculateAmount() {
-            ctrl.amount = EcommerceCartService.calculateAmount(ctrl.selectedProducts, ctrl.shouldApplyCoupon);
+            ctrl.amount = EcommercePaymentService.calculateAmount(ctrl.selectedProducts, ctrl.shouldApplyCoupon);
+        }
+        
+        function applyCoupon() {
+            ctrl.shouldApplyCoupon = true;
+            SweetAlert.swal({
+                title: "Success",
+                text: "Coupon applied with success "
+            });
+            ctrl.coupon = null;
+            calculateAmount();
         }
         function makePayment() {
             var cc = new Moip.CreditCard({
@@ -61,7 +74,7 @@
                 };
                 EcommerceCheckoutService.createOrder(orderRequest).then(function (response) {
                     var paymentRequest = {orderId : response.headers('Location').split("order/")[1]};
-                    EcommerceCheckoutService.createPayment(paymentRequest).then(function (response) {
+                    EcommercePaymentService.createPayment(paymentRequest).then(function (response) {
                         ctrl.loading = false;
                         alert(response.headers('Location').split("payment/")[1])
                     });

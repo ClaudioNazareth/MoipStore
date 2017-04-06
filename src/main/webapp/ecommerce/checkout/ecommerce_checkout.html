@@ -16,8 +16,6 @@
 </div>
 <div class="wrapper wrapper-content animated fadeInRight" ng-controller="EcommerceCheckoutController as ctrl">
     <div class="row">
-
-
         <div class="col-lg-12">
             <div ng-class="ctrl.loading ? 'ibox-content sk-loading' : 'ibox-content'">
                 <div class="sk-spinner sk-spinner-wave">
@@ -26,6 +24,87 @@
                     <div class="sk-rect3"></div>
                     <div class="sk-rect4"></div>
                     <div class="sk-rect5"></div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="payment-card">
+                        <h2>
+                            Have a coupon?
+                        </h2>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="input-group" id="cupon_id">
+                                    <input placeholder="Insert your coupon number" ng-model="ctrl.coupon" type="text" class="form-control">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-primary" ng-click="ctrl.applyCoupon()">Apply</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="col-sm-12">
+                                Enter your coupon to receive a 5% discount
+                            </div>
+                            <div class="col-sm-12">
+                                *Not cumulative
+                            </div>
+                             <br>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="payment-card">
+                        <h2>
+                            Shipping address
+                        </h2>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <strong>Cláudio Nazareth</strong>
+                            </div>
+                            <div class="col-sm-12">
+                                400 MONTGOMERY ST STE 305
+                            </div>
+                            <div class="col-sm-12">
+                            SAN FRANCISCO, CA 94104-1211
+                            </div>
+                            <div class="col-sm-12">
+                            United States
+                            </div>
+                            <div class="col-sm-12">
+                            Phone number: 415 481 9719
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="payment-card">
+                        <h2>
+                            Customer info
+                        </h2>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <strong>Cláudio Nazareth</strong>
+                            </div>
+                            <div class="col-sm-12">
+                                <strong>E-mail: </strong> chtnazareth@gmail.com
+                            </div>
+                            <div class="col-sm-12">
+                                <strong>BirthDate: </strong> 24/05/1983
+                            </div>
+                            <div class="col-sm-12">
+                                <strong>Tax Document</strong> 336.549.788-94
+                            </div>
+                            <div class="col-sm-12">
+                                <strong>Phone number:</strong> 415 481 9719
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             <div class="ibox">
@@ -117,15 +196,14 @@
 
                             </div>
                         </uib-accordion-group>
+                        <div class="ibox-content">
+                            <button class="btn btn-white" ui-sref="ecommerce.product_details"><i class="fa fa-arrow-left"></i>
+                                Continue shopping
+                            </button>
+                        </div>
                     </uib-accordion>
-
-
-
-
                 </div>
-
             </div>
-
         </div>
 
         </div>

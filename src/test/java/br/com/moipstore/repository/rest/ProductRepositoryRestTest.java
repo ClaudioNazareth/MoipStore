@@ -3,7 +3,6 @@ package br.com.moipstore.repository.rest;
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.ReadContext;
 import net.minidev.json.JSONArray;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Ignore
+//@Ignore
 public class ProductRepositoryRestTest {
 
     @Autowired
@@ -33,7 +32,7 @@ public class ProductRepositoryRestTest {
                 " and be exposed as a Rest Resource at /api/products " +
                 "The application has been configured to automatically read the data.json file " +
                 "insert into the mongodb and expose the data as Rest Sources which is automatically loaded in the application start, even in the integrated tests")
-                .hasSize(2);
+                .hasSize(3);
         final LinkedHashMap linkedHashMap = (LinkedHashMap) products.get(0).get(0);
         assertThat(linkedHashMap.get("code")).isEqualTo("1020");
         assertThat(linkedHashMap.get("name")).isEqualTo("PlayStation 4 Slim Console");

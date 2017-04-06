@@ -69,7 +69,7 @@
                 </div>
                 <div class="ibox-content">
 
-                    <button class="btn btn-primary pull-right" ui-sref="ecommerce_checkout.detail"><i class="fa fa fa-shopping-cart"></i> Checkout</button>
+                    <button class="btn btn-primary pull-right" ng-click="ctrl.checkout()"><i class="fa fa fa-shopping-cart"></i> Checkout</button>
                     <button class="btn btn-white" ui-sref="ecommerce.product_details"><i class="fa fa-arrow-left"></i>
                         Continue shopping
                     </button>
@@ -92,7 +92,7 @@
                     </span>
                     <div class="m-t-sm">
                         <div class="btn-group">
-                            <a class="btn btn-primary btn-sm" ui-sref="ecommerce_checkout.detail"><i class="fa fa-shopping-cart"></i> Checkout</a>
+                            <a class="btn btn-primary btn-sm" ng-click="ctrl.checkout()"><i class="fa fa-shopping-cart"></i> Checkout</a>
                             <a href="#" class="btn btn-white btn-sm"> Cancel</a>
                         </div>
                     </div>
