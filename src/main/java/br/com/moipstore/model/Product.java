@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,29 +19,24 @@ public class Product {
     private String id;
 
     @Indexed
+    @NotNull
     private String code;
 
     @Indexed
+    @NotNull
     private String name;
-
     private String slogan;
-
     private String description;
-
     private String info;
-
     private String dimensions;
-
-    //Simplified model for this test
+    //Simplified model for testes purpose
     private String media;
-
-    //Simplified model for this test
+    //Simplified model for testes purpose
     private String manufacturer;
 
+    @NotNull
     private BigDecimal price;
-
     private List<String> imageLinks = new ArrayList<>();
-
     private String imageIcon;
 
     public Product(String id, String code, String name, String slogan, String description, String info, String dimensions, String media, String manufacturer, BigDecimal price, List<String> imageLinks, String imageIcon) {
@@ -58,7 +54,7 @@ public class Product {
         this.imageIcon = imageIcon;
     }
 
-    Product(){
+    public Product(){
     }
 
     public String getId() {

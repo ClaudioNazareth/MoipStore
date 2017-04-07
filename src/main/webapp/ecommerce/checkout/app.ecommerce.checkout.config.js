@@ -36,7 +36,13 @@
                             {
                                 name: 'oitozero.ngSweetAlert',
                                 files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-                            }
+                            },
+                            {
+                                insertBefore: '#loadBefore',
+                                name: 'localytics.directives',
+                                files: ['css/plugins/chosen/bootstrap-chosen.css','js/plugins/chosen/chosen.jquery.js','js/plugins/chosen/chosen.js']
+                            },
+
                         ]);
                     }
                 }

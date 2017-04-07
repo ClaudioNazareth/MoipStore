@@ -149,7 +149,7 @@
                                                     <div class="form-group">
                                                         <label>CARD NUMBER</label>
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control" name="Number" placeholder="Valid Card Number" ng-model="ctrl.cardNumber" required />
+                                                            <input type="text" class="form-control" name="Number" placeholder="Valid Card Number" ng-model="ctrl.card.number" required />
                                                             <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
                                                         </div>
                                                     </div>
@@ -159,19 +159,19 @@
                                                 <div class="col-xs-4 col-md-4">
                                                     <div class="form-group">
                                                         <label>EXPIRATION MONTH</label>
-                                                        <input type="number" class="form-control" name="Expiry_month" placeholder="MM" maxlength="2" ng-model="ctrl.cardExpirationMonth" required/>
+                                                        <input type="number" class="form-control" name="expiry_month" placeholder="MM" min="01" max="12" ng-model="ctrl.card.expirationMonth" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-4 col-md-4">
                                                     <div class="form-group">
                                                         <label>EXPIRATION YEAR</label>
-                                                        <input type="number" class="form-control" name="Expiry_year" ng-maxlength="2" placeholder="YY" ng-model="ctrl.cardExpirationYear" required/>
+                                                        <input type="number" class="form-control" name="expiry_year" min="01" max="99" placeholder="YY" ng-model="ctrl.card.expirationYear" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-4 col-md-4 pull-right">
                                                     <div class="form-group">
                                                         <label>CV CODE</label>
-                                                        <input type="text" class="form-control" name="CVC" placeholder="CVC" ng-model="ctrl.cardCVC" required/>
+                                                        <input type="text" class="form-control" name="CVC" placeholder="CVC" ng-model="ctrl.card.CVC" required/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -179,21 +179,30 @@
                                                 <div class="col-xs-12">
                                                     <div class="form-group">
                                                         <label>NAME OF CARD</label>
-                                                        <input type="text" class="form-control" name="nameCard" placeholder="NAME AND SURNAME" ng-model="ctrl.cardName" required/>
+                                                        <input type="text" class="form-control" name="card" placeholder="NAME AND SURNAME" ng-model="ctrl.card.name" required/>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="col-xs-4">
+                                                    <div class="form-group">
+                                                        <label>INSTALLMENTS</label>
+                                                        <div>
+                                                            <select chosen id="installment" class="chosen-select"  tabindex="4" ng-model="ctrl.installment" ng-options="item as item.text for item in ctrl.installments">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br/>
                                             <div class="row">
                                                 <div class="col-xs-12">
                                                     <button class="btn btn-primary" ng-click="ctrl.makePayment()">Make a payment!</button>
                                                 </div>
                                             </div>
                                         </form>
-
                                     </div>
-
                                 </div>
-
                             </div>
                         </uib-accordion-group>
                         <div class="ibox-content">
@@ -205,7 +214,6 @@
                 </div>
             </div>
         </div>
-
         </div>
     </div>
 

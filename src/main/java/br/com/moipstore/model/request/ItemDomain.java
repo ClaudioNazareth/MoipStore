@@ -1,7 +1,7 @@
-package br.com.moipstore.rest.request;
+package br.com.moipstore.model.request;
 
 
-public class ItemRequest {
+public class ItemDomain {
 
     private String productCode;
     private int quantity;
@@ -24,7 +24,7 @@ public class ItemRequest {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("ItemRequest{");
+        final StringBuffer sb = new StringBuffer("ItemDomain{");
         sb.append("productCode='").append(productCode).append('\'');
         sb.append(", quantity=").append(quantity);
         sb.append('}');

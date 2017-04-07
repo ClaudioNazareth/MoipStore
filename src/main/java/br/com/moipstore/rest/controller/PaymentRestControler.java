@@ -6,7 +6,7 @@ import br.com.moip.authentication.Authentication;
 import br.com.moip.authentication.BasicAuth;
 import br.com.moip.request.*;
 import br.com.moip.resource.Payment;
-import br.com.moipstore.rest.request.PaymentRequest;
+import br.com.moipstore.model.request.PaymentRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
