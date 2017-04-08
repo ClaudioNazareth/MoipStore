@@ -21,11 +21,11 @@ public class OrderServiceTest {
 
     @Test
     public void whenOrderIsCreatedSuccessfullyTheServiceMustReturnAnPersistedOrderEntity() throws Exception {
-        Order order = orderService.createOrder(OrderData.getOrderDomain());
+        Order order = orderService.createOrder(OrderData.getOrderDomainWithOneInstallments());
 
         assertThat(order).as("Order must be created and persisted in database").isNotNull();
 
-        assertThat(order.getAmount()).as("The order has 1 item with two Units, so the amount must be 701.98").isEqualTo(70198);
+        assertThat(order.getAmount()).as("The order has 1 item with two Units, so the amount must be with the coupon 666.88").isEqualTo(66688);
 
         assertThat(order.getItems()).as("The Order must have 1 item")
                 .hasSize(1)

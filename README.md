@@ -7,7 +7,7 @@
 - For Rest API documentation see /documentation/index.html (EX: http://localhost:8080/documentation/index.html)
 - To run angular test you need to install : NodeJS (https://nodejs.org/en/download/), Karma(http://karma-runner.github.io/0.12/intro/installation.html)
  and Jasmine (https://jasmine.github.io/1.3/introduction.html)
--
+- Java code coverage - Class 94% - Method 80% - Line 79%
 
 ## Technologies and frameworks used and reasons
 

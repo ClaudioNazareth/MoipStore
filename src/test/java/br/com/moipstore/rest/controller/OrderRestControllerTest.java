@@ -1,8 +1,6 @@
 package br.com.moipstore.rest.controller;
 
 import br.com.moipstore.data.OrderData;
-import br.com.moipstore.model.request.ItemDomain;
-import br.com.moipstore.model.request.OrderDomain;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,7 +34,7 @@ public class OrderRestControllerTest {
 
     @Test
     public void whenOrderIsCreated201StatusCodeMustReturn() throws Exception {
-        ResponseEntity<?> order = orderRestController.createOrder(OrderData.getOrderDomain());
+        ResponseEntity<?> order = orderRestController.createOrder(OrderData.getOrderDomainWithOneInstallments());
         assertThat(order).as("Order must be Created and MoipAPI in SandBox must be online").isNotNull();
         assertThat(order.getStatusCode()).as("The Status code must be created").isEqualTo(HttpStatus.CREATED);
         assertThat(order.getHeaders().get("location")).as("The new order location Must be returned").isNotNull();

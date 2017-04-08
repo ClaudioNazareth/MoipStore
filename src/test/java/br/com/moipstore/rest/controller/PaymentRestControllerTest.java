@@ -2,10 +2,6 @@ package br.com.moipstore.rest.controller;
 
 import br.com.moipstore.data.OrderData;
 import br.com.moipstore.data.PaymentData;
-import br.com.moipstore.model.request.HolderDomain;
-import br.com.moipstore.model.request.ItemDomain;
-import br.com.moipstore.model.request.OrderDomain;
-import br.com.moipstore.model.request.PaymentDomain;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,10 +16,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -45,7 +38,7 @@ public class PaymentRestControllerTest {
     @Test
     public void whenPaymentIsCreatedSuccessfullyTheServerMustResponde201AndReturnTheLink() throws Exception {
         //Create an order to proceed with the Payment
-        ResponseEntity<?> order = orderRestController.createOrder(OrderData.getOrderDomain());
+        ResponseEntity<?> order = orderRestController.createOrder(OrderData.getOrderDomainWithOneInstallments());
         String location = order.getHeaders().get("location").get(0);
         String orderId = location.split("localhost/")[1];
 

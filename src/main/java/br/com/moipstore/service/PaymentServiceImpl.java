@@ -38,7 +38,7 @@ public class PaymentServiceImpl implements PaymentService {
                         .fundingInstrument(new FundingInstrumentRequest()
                                 .creditCard(createCreditCardRequest(paymentRequest)))
         );
-        Payment payment = new Payment(createdPayment.getId(), createdPayment.getStatus().getDescription(), new BigDecimal(createdPayment.getAmount().getTotal()));
+        Payment payment = new Payment(createdPayment.getId(), createdPayment.getStatus().getDescription(), createdPayment.getAmount().getTotal());
         paymentRepository.save(payment);
 
         return payment;

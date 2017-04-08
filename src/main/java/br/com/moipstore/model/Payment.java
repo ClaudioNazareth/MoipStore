@@ -14,14 +14,17 @@ public class Payment {
 
     @Id
     private String id;
+
+    private String code;
     //Simplified model for testes purpose
     @NotNull
     private String status;
     @NotNull
-    private BigDecimal amount;
+    private Integer amount;
 
-    public Payment(String id, String status, BigDecimal amount) {
+    public Payment(String id, String status, Integer amount) {
         this.id = id;
+        this.code = id;
         this.status = status;
         this.amount = amount;
     }
@@ -46,12 +49,20 @@ public class Payment {
         this.status = status;
     }
 
-    public BigDecimal getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     @Override
