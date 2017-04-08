@@ -3,8 +3,9 @@
 ## Information
 - During the development period the webhook was not returning the data, although it was configured in the account and added to the return URL. So the webhook was not set up for this example
 - Port :8080
+- Deployed on Heroku : https://moip-store.herokuapp.com
 - To start the application execute the task --> bootRun 
-- For Rest API documentation see /documentation/index.html (EX: http://localhost:8080/documentation/index.html)
+- For Rest API documentation see /documentation/index.html (EX: https://moip-store.herokuapp.com/documentation/index.html)
 - To run angular test you need to install : NodeJS (https://nodejs.org/en/download/), Karma(http://karma-runner.github.io/0.12/intro/installation.html)
  and Jasmine (https://jasmine.github.io/1.3/introduction.html)
 - Java code coverage - Class 94% - Method 80% - Line 79%
