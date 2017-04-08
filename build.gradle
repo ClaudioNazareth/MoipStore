@@ -30,8 +30,9 @@ dependencies {
     compile group: 'de.flapdoodle.embed', name: 'de.flapdoodle.embed.mongo', version: '1.50.5'
     compile group: 'br.com.moip', name: 'java-sdk', version: '2.1.2'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest'
-    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.4.0'
-    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.4.0'
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.6.1'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.6.1'
+    compile "io.springfox:springfox-data-rest:2.6.1"
     testCompile("com.jayway.jsonpath:json-path")
 }
 
