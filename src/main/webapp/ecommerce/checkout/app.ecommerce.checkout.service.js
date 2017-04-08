@@ -11,9 +11,9 @@
     angular.module('moipstore.ecommerce.checkout')
         .factory('EcommerceCheckoutService', EcommerceCheckoutService);
 
-    EcommerceCheckoutService.$inject = ['$http'];
+    EcommerceCheckoutService.$inject = ['$http','$log'];
 
-    function EcommerceCheckoutService($http) {
+    function EcommerceCheckoutService($http, $log) {
 
         var service = {
             createOrder:createOrder
@@ -23,7 +23,7 @@
         function createOrder(orderRequest) {
             var req = {
                 method: 'POST',
-                url: '/api/order',
+                url: '/api/v1/orders',
                 headers: {
                     'Content-Type': 'application/json'
                 },

@@ -10,9 +10,9 @@
     angular.module('moipstore.ecommerce.checkout')
         .controller('EcommerceCheckoutController', EcommerceCheckoutController);
 
-    EcommerceCheckoutController.$inject = ['$scope','EcommerceCartService', 'EcommerceCheckoutService', 'EcommercePaymentService', 'SweetAlert', 'CreditCardService'];
+    EcommerceCheckoutController.$inject = ['$scope','EcommerceCartService', 'EcommerceCheckoutService', 'EcommercePaymentService', 'SweetAlert', 'CreditCardService', 'CustomerService'];
 
-    function EcommerceCheckoutController($scope, EcommerceCartService, EcommerceCheckoutService, EcommercePaymentService, SweetAlert, CreditCardService) {
+    function EcommerceCheckoutController($scope, EcommerceCartService, EcommerceCheckoutService, EcommercePaymentService, SweetAlert, CreditCardService, CustomerService) {
         var ctrl = this;
 
         ctrl.amount = 0;
@@ -30,6 +30,7 @@
         ctrl.coupon = null;
         ctrl.installment = null;
         ctrl.installments = [];
+        ctrl.customer = null;
 
         ctrl.makePayment = makePayment;
         ctrl.applyCoupon = applyCoupon;
@@ -39,6 +40,9 @@
         function activate() {
             ctrl.selectedProducts = EcommerceCartService.getSelectedProducts();
             calculateAmount();
+            CustomerService.getCustomer().then(function (data) {
+                ctrl.customer = data;
+            })
         }
 
         function calculateAmount() {
@@ -49,7 +53,7 @@
         function calculateInstallments() {
             ctrl.installments = [];
             for (var i = 1; i <= 13; i++) {
-                var installment = {number: i, text: i + " x " + (ctrl.amount / i).toFixed(2)};
+                var installment = {number: i, text: i + " x " + ((ctrl.amount/100) / i).toFixed(2)};
                 ctrl.installments.push(installment);
             }
         }
@@ -69,9 +73,9 @@
 
             if( CreditCardService.isCreditCardValid(ctrl.card)){
                 ctrl.loading = true;
-                var orderRequest = createOrderRequest();
+                var orderDomain = createOrderDomain();
 
-                EcommerceCheckoutService.createOrder(orderRequest).then(onCreateOrderSuccess, onCreateOrderError);
+                EcommerceCheckoutService.createOrder(orderDomain).then(onCreateOrderSuccess, onCreateOrderError);
             } else {
                 SweetAlert.swal({
                     title: "CreditCard Invalid",
@@ -79,30 +83,37 @@
                 });
             }
 
-            function createOrderRequest() {
-                var itens = [];
+            function createOrderDomain() {
+                var items = [];
                 ctrl.selectedProducts.forEach(function (selectedProduct) {
                     var item = {productCode: selectedProduct.code, quantity: selectedProduct.quantity};
-                    itens.push(item);
+                    items.push(item);
                 });
-                var orderRequest = {
-                    customerId: "cust",
-                    items: itens
+                var orderDomain = {
+                    customerId: ctrl.customer.code,
+                    items: items
                 };
-                return orderRequest;
+                return orderDomain;
             }
 
             function onCreateOrderSuccess(response) {
                 var paymentRequest = {
-                    orderId : response.headers('Location').split("order/")[1],
-                    creditCardHash : CreditCardService.getCreditCardHash()
+                    orderId : response.headers('Location').split("orders/")[1],
+                    creditCardHash : CreditCardService.getCreditCardHash(),
+                    holderDomain :{
+                        fullName : ctrl.customer.fullName,
+                        birthDate : ctrl.customer.birthDate.split("T")[0],
+                        phoneAreaCode : ctrl.customer.phone.areaCode,
+                        phoneNumber : ctrl.customer.phone.number,
+                        taxDocument : ctrl.customer.taxDocument
+                    }
                 };
 
                 EcommercePaymentService.createPayment(paymentRequest).then(onPaymentSuccess, onPaymentError);
 
                 function onPaymentSuccess(response) {
                     ctrl.loading = false;
-                    alert(response.headers('Location').split("payment/")[1])
+                    alert(response.headers('Location').split("payments/")[1])
                 }
 
                 function onPaymentError() {

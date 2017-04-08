@@ -30,7 +30,7 @@
         function findProducts(){
             var req = {
                 method: 'GET',
-                url: '/api/products',
+                url: '/api/v1/products',
                 headers: {
                     'Content-Type': 'application/json'
                 }

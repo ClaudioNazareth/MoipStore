@@ -5,7 +5,6 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
 
 /**
  * Model to represent Items information and map to mongoDB
@@ -24,9 +23,9 @@ public class Item {
     private Integer quantity;
 
     @NotNull
-    private BigDecimal price;
+    private Integer price;
 
-    public Item(String productCode, Integer quantity, BigDecimal price) {
+    public Item(String productCode, Integer quantity, Integer price) {
         this.productCode = productCode;
         this.quantity = quantity;
         this.price = price;
@@ -60,11 +59,11 @@ public class Item {
         this.quantity = quantity;
     }
 
-    public BigDecimal getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 

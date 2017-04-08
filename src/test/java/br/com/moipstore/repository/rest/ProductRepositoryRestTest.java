@@ -17,7 +17,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
-//@Ignore
 public class ProductRepositoryRestTest {
 
     @Autowired
@@ -25,7 +24,7 @@ public class ProductRepositoryRestTest {
 
     @Test
     public void whenApplicationStartsRestServicesShouldBeStarted(){
-        String body = this.restTemplate.getForObject("/api/products", String.class);
+        String body = this.restTemplate.getForObject("/api/v1/products", String.class);
         ReadContext ctx = JsonPath.parse(body);
         List<JSONArray> products = ctx.read("$..products");
         assertThat(products.get(0)).as("When Application starts all data from file (data.json) must be loaded to MongoDB" +
@@ -34,9 +33,9 @@ public class ProductRepositoryRestTest {
                 "insert into the mongodb and expose the data as Rest Sources which is automatically loaded in the application start, even in the integrated tests")
                 .hasSize(3);
         final LinkedHashMap linkedHashMap = (LinkedHashMap) products.get(0).get(0);
-        assertThat(linkedHashMap.get("code")).isEqualTo("1020");
+        assertThat(linkedHashMap.get("code")).isEqualTo("PROD-1020");
         assertThat(linkedHashMap.get("name")).isEqualTo("PlayStation 4 Slim Console");
-        assertThat(linkedHashMap.get("price")).isEqualTo( 399.01);
+        assertThat(linkedHashMap.get("price")).isEqualTo( 39901);
     }
 
 }

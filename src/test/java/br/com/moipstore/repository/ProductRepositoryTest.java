@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.math.BigDecimal;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
 
@@ -18,6 +16,9 @@ public class ProductRepositoryTest {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private CustomerRepository customerRepository;
+
     @Test
     public void whenApplicationStartsProductDataShouldBeLoaded(){
         assertThat(productRepository.findAll())
@@ -26,7 +27,8 @@ public class ProductRepositoryTest {
                         "insert into the mongodb, which is automatically loaded in the application start, even in the integrated tests")
                 .hasSize(3)
                 .extracting("code", "name", "price")
-                .contains(tuple("1020", "PlayStation 4 Slim Console", new BigDecimal("399.01")),
-                        tuple("1030", "Xbox One S 500GB Console", new BigDecimal("350.99")));
+                .contains(tuple("PROD-1020", "PlayStation 4 Slim Console",39901),
+                        tuple("PROD-1030", "Xbox One S 500GB Console", 35099),
+                        tuple("PROD-1040", "Nintendo Switch Console", 29999));
     }
 }

@@ -24,7 +24,7 @@
         function createPayment(paymentRequest) {
             var req = {
                 method: 'POST',
-                url: '/api/payment',
+                url: '/api/v1/payments',
                 headers: {
                     'Content-Type': 'application/json'
                 },

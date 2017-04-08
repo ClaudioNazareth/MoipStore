@@ -20,6 +20,16 @@ public class Payment {
     @NotNull
     private BigDecimal amount;
 
+    public Payment(String id, String status, BigDecimal amount) {
+        this.id = id;
+        this.status = status;
+        this.amount = amount;
+    }
+
+    Payment(){
+
+    }
+
     public String getId() {
         return id;
     }

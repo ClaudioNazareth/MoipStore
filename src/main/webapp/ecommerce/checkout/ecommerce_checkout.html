@@ -63,19 +63,19 @@
                         <br>
                         <div class="row">
                             <div class="col-sm-12">
-                                <strong>Cláudio Nazareth</strong>
+                                <strong>{{ctrl.customer.fullName}}</strong>
                             </div>
                             <div class="col-sm-12">
-                                400 MONTGOMERY ST STE 305
+                                {{ctrl.customer.shippingAddress.streetNumber}} {{ctrl.customer.shippingAddress.street}} {{ctrl.customer.shippingAddress.complement}}
                             </div>
                             <div class="col-sm-12">
-                            SAN FRANCISCO, CA 94104-1211
+                                {{ctrl.customer.shippingAddress.city}},{{ctrl.customer.shippingAddress.state}} {{ctrl.customer.shippingAddress.zipCode}}
                             </div>
                             <div class="col-sm-12">
-                            United States
+                                {{ctrl.customer.shippingAddress.country}}
                             </div>
                             <div class="col-sm-12">
-                            Phone number: 415 481 9719
+                            Phone number:  {{ctrl.customer.phone.areaCode}} {{ctrl.customer.phone.number}}
                             </div>
                         </div>
                     </div>
@@ -89,19 +89,19 @@
                         <br>
                         <div class="row">
                             <div class="col-sm-12">
-                                <strong>Cláudio Nazareth</strong>
+                                <strong>{{ctrl.customer.fullName}}</strong>
                             </div>
                             <div class="col-sm-12">
-                                <strong>E-mail: </strong> chtnazareth@gmail.com
+                                <strong>E-mail: </strong> {{ctrl.customer.email}}
                             </div>
                             <div class="col-sm-12">
-                                <strong>BirthDate: </strong> 24/05/1983
+                                <strong>BirthDate: </strong> {{ctrl.customer.birthDate}}
                             </div>
                             <div class="col-sm-12">
-                                <strong>Tax Document</strong> 336.549.788-94
+                                <strong>Tax Document</strong> {{ctrl.customer.taxDocument}}
                             </div>
                             <div class="col-sm-12">
-                                <strong>Phone number:</strong> 415 481 9719
+                                <strong>Phone number:</strong> {{ctrl.customer.phone.areaCode}} {{ctrl.customer.phone.number}}
                             </div>
                         </div>
                     </div>
@@ -132,7 +132,7 @@
                                         <strong>Products:</strong>:
                                         <p ng-repeat="product in ctrl.selectedProducts" ng-bind="product.name"></p>
 
-                                        <strong>Price:</strong>: <span class="text-navy">{{ctrl.amount | currency}}</span>
+                                        <strong>Price:</strong>: <span class="text-navy">{{ctrl.amount/100 | currency}}</span>
 
                                         <p class="m-t">
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do

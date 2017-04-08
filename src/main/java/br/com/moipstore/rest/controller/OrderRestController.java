@@ -16,7 +16,7 @@ import java.net.URI;
 import static org.springframework.http.ResponseEntity.created;
 
 @RestController
-@RequestMapping("/api/order")
+@RequestMapping("/api/v1/orders")
 public class OrderRestController {
 
     @Autowired

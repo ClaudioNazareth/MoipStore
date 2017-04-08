@@ -4,7 +4,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
 import java.util.List;
 /**
  * Model to represent Order information and map to mongoDB
@@ -16,7 +15,7 @@ public class Order {
     private String id;
 
     @NotNull
-    private BigDecimal amount;
+    private Integer amount;
 
     @NotNull
     private List<Item> items;
@@ -24,7 +23,7 @@ public class Order {
     @NotNull
     private Customer customer;
 
-    public Order(String id, BigDecimal amount, List<Item> items, Customer customer) {
+    public Order(String id, Integer amount, List<Item> items, Customer customer) {
         this.id = id;
         this.amount = amount;
         this.items = items;
@@ -39,11 +38,11 @@ public class Order {
         this.id = id;
     }
 
-    public BigDecimal getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 

@@ -1,36 +1,8 @@
-//group 'br.com.moipstore'
-//version '1.0-SNAPSHOT'
-
-//buildscript {
-//
-//    repositories {
-//        jcenter()
-//        mavenCentral()
-//        maven { url 'http://repo.spring.io/snapshot' }
-//        maven { url 'http://repo.spring.io/milestone' }
-//    }
-//    dependencies {
-//        //Configuration of StringBoot 2
-//        classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.0.0.BUILD-SNAPSHOT'
-//    }
-//}
-
 plugins {
     id 'org.springframework.boot' version '1.5.2.RELEASE'
     id 'java'
     id 'war'
 }
-//jar {
-//    baseName = 'myproject'
-//    version =  '0.0.1-SNAPSHOT'
-//}
-
-
-//apply plugin: 'java'
-//apply plugin: 'war'
-//apply plugin: 'org.springframework.boot'
-
-
 
 //Java 8
 sourceCompatibility = 1.8
@@ -58,6 +30,8 @@ dependencies {
     compile group: 'de.flapdoodle.embed', name: 'de.flapdoodle.embed.mongo', version: '1.50.5'
     compile group: 'br.com.moip', name: 'java-sdk', version: '2.1.2'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest'
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.4.0'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.4.0'
     testCompile("com.jayway.jsonpath:json-path")
 }
 

@@ -52,14 +52,14 @@
                                     </div>
                                 </td>
                                 <td>
-                                    {{product.price | currency}}
+                                    {{product.price/100 | currency}}
                                 </td>
                                 <td width="85">
                                     <input type="number" min="1" class="form-control" ng-model="product.quantity" ng-change="ctrl.calculateAmount()">
                                 </td>
                                 <td>
                                     <h4>
-                                        {{product.price * product.quantity | currency}}
+                                        {{product.price/100 * product.quantity | currency}}
                                     </h4>
                                 </td>
                             </tr>
@@ -84,7 +84,7 @@
                 <div class="ibox-content">
                     <span> Total </span>
                     <h2 class="font-bold">
-                        {{ctrl.amount | currency}}
+                        {{ctrl.amount/100 | currency}}
                     </h2>
                     <hr/>
                     <span class="text-muted small">

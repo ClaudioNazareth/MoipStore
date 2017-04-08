@@ -5,7 +5,6 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,11 +34,11 @@ public class Product {
     private String manufacturer;
 
     @NotNull
-    private BigDecimal price;
+    private Integer price;
     private List<String> imageLinks = new ArrayList<>();
     private String imageIcon;
 
-    public Product(String id, String code, String name, String slogan, String description, String info, String dimensions, String media, String manufacturer, BigDecimal price, List<String> imageLinks, String imageIcon) {
+    public Product(String id, String code, String name, String slogan, String description, String info, String dimensions, String media, String manufacturer, Integer price, List<String> imageLinks, String imageIcon) {
         this.id = id;
         this.code = code;
         this.name = name;
@@ -129,11 +128,11 @@ public class Product {
         this.manufacturer = manufacturer;
     }
 
-    public BigDecimal getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 

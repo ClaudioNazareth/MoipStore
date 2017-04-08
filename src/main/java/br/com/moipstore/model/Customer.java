@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
-import java.time.Instant;
+import java.util.Date;
 
 /**
  * Model to represent Customer information and map to mongoDB
@@ -16,6 +16,9 @@ public class Customer {
     @Id
     private String id;
 
+    @NotNull
+    private String code;
+
     @Indexed
     @NotNull
     private String fullName;
@@ -24,16 +27,17 @@ public class Customer {
     private String email;
 
     @NotNull
-    private Instant birthDate;
+    private Date birthDate;
 
     @NotNull
     private String taxDocument;
 
     @NotNull
-    private ShippingAddress ShippingAddress;
+    private ShippingAddress shippingAddress;
 
     @NotNull
     private Phone phone;
+
 
     public String getId() {
         return id;
@@ -41,6 +45,14 @@ public class Customer {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getFullName() {
@@ -59,11 +71,11 @@ public class Customer {
         this.email = email;
     }
 
-    public Instant getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Instant birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -75,12 +87,12 @@ public class Customer {
         this.taxDocument = taxDocument;
     }
 
-    public br.com.moipstore.model.ShippingAddress getShippingAddress() {
-        return ShippingAddress;
+    public ShippingAddress getShippingAddress() {
+        return shippingAddress;
     }
 
-    public void setShippingAddress(br.com.moipstore.model.ShippingAddress shippingAddress) {
-        ShippingAddress = shippingAddress;
+    public void setShippingAddress(ShippingAddress shippingAddress) {
+        this.shippingAddress = shippingAddress;
     }
 
     public Phone getPhone() {
@@ -94,14 +106,14 @@ public class Customer {
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Customer{");
-            sb.append("id='").append(id).append('\'');
-            sb.append(", fullName='").append(fullName).append('\'');
-            sb.append(", email='").append(email).append('\'');
-            sb.append(", birthDate=").append(birthDate);
-            sb.append(", taxDocument='").append(taxDocument).append('\'');
-            sb.append(", ShippingAddress=").append(ShippingAddress);
-            sb.append(", phone=").append(phone);
-            sb.append('}');
+        sb.append("code='").append(code).append('\'');
+        sb.append(", fullName='").append(fullName).append('\'');
+        sb.append(", email='").append(email).append('\'');
+        sb.append(", birthDate=").append(birthDate);
+        sb.append(", taxDocument='").append(taxDocument).append('\'');
+        sb.append(", shippingAddress=").append(shippingAddress);
+        sb.append(", phone=").append(phone);
+        sb.append('}');
         return sb.toString();
     }
 }

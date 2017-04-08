@@ -1,7 +1,8 @@
 
 [
   { "_class" : "br.com.moipstore.model.Product",
-    "code" : "1020",
+    "id" : "PROD-1020",
+    "code" : "PROD-1020",
     "name" : "PlayStation 4 Slim Console" ,
     "description": "The PS4 system focuses on the gamer, ensuring that the very best games and the most immersive experiences are possible on the platform. The PS4 system enables the greatest game developers in the world to unlock their creativity and push the boundaries of play through a system that is tuned specifically to their needs.",
     "info" : "Moving away from the more complex Cell microarchitecture of its predecessor, the console features an AMD Accelerated Processing Unit (APU) built upon the x86-64 architecture, which can theoretically peak at 1.84 teraflops; AMD stated that it was the 'most powerful' APU it had developed to date.",
@@ -11,10 +12,11 @@
     "manufacturer" : "Sony",
     "imageLinks" :["http://images.designntrend.com/data/images/full/93760/ps4-logo.jpg?w=780", "http://www.meups4.com.br/wp-content/uploads/2017/02/PS4.jpg", "http://videogamemais.com.br/wp-content/uploads/2013/10/ps4.jpg"],
     "imageIcon" : "https://rsesporte.com/wp-content/uploads/2016/09/PS4-Sales-730x411.jpg",
-    "price" : "399.01"},
+    "price" : "39901"},
 
   { "_class" : "br.com.moipstore.model.Product",
-    "code" : "1030",
+    "id" : "PROD-1030",
+    "code" : "PROD-1030",
     "name" : "Xbox One S 500GB Console",
     "description": "The Xbox One S 500GB Console - Battlefield 1 Bundle includes: Xbox One S 500GB Console, full game download of Battlefield 1, one month of EA Access, Xbox Wireless Controller, HDMI cable (4K Capable), Power cable and a 14-day Xbox Live Gold Trial.",
     "info" : "Moving away from its predecessor's PowerPC-based architecture, the Xbox One marks a shift back to the x86 architecture used in the original Xbox; it features an AMD Accelerated Processing Unit (APU) built around the x86-64 instruction set. The console places an increased emphasis on cloud computing and the integration of entertainment applications and services",
@@ -24,10 +26,11 @@
     "manufacturer" : "Microsoft",
     "imageLinks" : ["http://www.gizmodo.jp/images/2015/08/150805nxboxup.jpg", "http://s2.glbimg.com/mFtHQ709Pedpimh9AeJ5m3h1FkQ=/695x0/s.glbimg.com/po/tt2/f/original/2014/11/14/xbox-one.jpg", "https://whatsyourtagblog.files.wordpress.com/2013/08/xbox-one-controller-021.jpg?w=800"],
     "imageIcon" : "http://cdn.mos.cms.futurecdn.net/9031a5c33a25d2609d046612e4941fb5-1200-80.jpg",
-    "price":"350.99"},
+    "price":"35099"},
 
   { "_class" : "br.com.moipstore.model.Product",
-    "code" : "1040",
+    "id" : "PROD-1040",
+    "code" : "PROD-1040",
     "name" : "Nintendo Switch Console",
     "description": "Introducing Nintendo Switch, the new home video game system from Nintendo. In addition to providing single and multiplayer thrills at home, the Nintendo Switch system can be taken on the go so players can enjoy a full home console experience anytime, anywhere. The mobility of a handheld is now added to the power of a home gaming system, with unprecedented new play styles brought to life by the two new Joy-Con controllers.",
     "info" : "Lift Nintendo Switch from the dock and instantly transition to handheld mode for on-the-go gaming. By sharing Joy-Con, players can go head-to-head while away from home. You can also enjoy the same great games in tabletop mode by using the included stand to prop the system up.",
@@ -37,5 +40,30 @@
     "manufacturer" : "Nintendo",
     "imageLinks" : ["http://media.nintendo.com/nintendo/cocoon/switch-static-pages/switch/etRgxnAu0zRX4bmWnt9K628wG7YQUI6t/images/switch/home/bundle1.jpg", "https://jovemnerd.com.br/wp-content/uploads/2017/01/nintendo-switch2-760x428.jpg", "https://cnet1.cbsistatic.com/img/kt-ppokmtSYCUP9d6WstAaEFuoQ=/724x407/2017/02/23/5bf20b56-a1a7-4587-868f-f9f848dbc7bf/nintendo-switch-console-4923.jpg"],
     "imageIcon" : "http://media.nintendo.com/nintendo/bin/ycRDJrY9OQ-fk2OnJlUtcV4GMvWdP46p/Gw5ScAwTh80PBEnAdG7h3xwB0Ikd5Jfl.jpg",
-    "price":"299.99"}
+    "price":"29999"},
+
+  { "_class" : "br.com.moipstore.model.Customer",
+    "id" : "CUST-1000",
+    "code" : "CUST-1000",
+    "fullName" : "Cláudio Nazareth",
+    "email": "chtnazareth@gmail.com",
+    "birthDate" : "1983-10-10",
+    "taxDocument" : "22222222222",
+    "shippingAddress" : {
+      "id" : "ADDR-1000",
+      "street" : "MONTGOMERY ST STE 305",
+      "streetNumber" : "400",
+      "complement" :  "AP 200",
+      "district" : "CALDISTR",
+      "city" : "SAN FRANCISCO",
+      "state" : "CA",
+      "country" : "USA",
+      "zipCode" : "94104-1211"
+    },
+    "phone" : {
+      "id" : "PHON-1000",
+      "areaCode" : "415",
+      "number" : "481 9719"
+    }
+  }
 ]

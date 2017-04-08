@@ -21,6 +21,8 @@
         };
         return service;
 
+        ////////////////
+
         function storeData(key, data) {
             $window.localStorage[key] = angular.toJson(data);
         }
