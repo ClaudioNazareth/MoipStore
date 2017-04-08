@@ -1,8 +1,11 @@
 package br.com.moipstore.rest.controller;
 
 import br.com.moipstore.data.OrderData;
+import br.com.moipstore.data.PaymentData;
+import br.com.moipstore.model.request.HolderDomain;
 import br.com.moipstore.model.request.ItemDomain;
 import br.com.moipstore.model.request.OrderDomain;
+import br.com.moipstore.model.request.PaymentDomain;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,15 +20,20 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class OrderRestControllerTest {
+public class PaymentRestControllerTest {
 
     @Autowired
     private OrderRestController orderRestController;
+
+    @Autowired
+    private PaymentRestController paymentRestController;
 
     @Before
     public void setUp() throws Exception {
@@ -35,11 +43,14 @@ public class OrderRestControllerTest {
     }
 
     @Test
-    public void whenOrderIsCreated201StatusCodeMustReturn() throws Exception {
+    public void whenPaymentIsCreatedSuccessfullyTheServerMustResponde201AndReturnTheLink() throws Exception {
+        //Create an order to proceed with the Payment
         ResponseEntity<?> order = orderRestController.createOrder(OrderData.getOrderDomain());
-        assertThat(order).as("Order must be Created and MoipAPI in SandBox must be online").isNotNull();
-        assertThat(order.getStatusCode()).as("The Status code must be created").isEqualTo(HttpStatus.CREATED);
-        assertThat(order.getHeaders().get("location")).as("The new order location Must be returned").isNotNull();
-    }
+        String location = order.getHeaders().get("location").get(0);
+        String orderId = location.split("localhost/")[1];
 
-}
+        ResponseEntity<?> paymentReturn = paymentRestController.createPayment(PaymentData.createPaymentDomain(orderId));
+        assertThat(paymentReturn).as("Payment must be Created and MoipAPI in SandBox must be online").isNotNull();
+        assertThat(paymentReturn.getStatusCode()).as("The Status code must be created").isEqualTo(HttpStatus.CREATED);
+        assertThat(paymentReturn.getHeaders().get("location")).as("The new payment location Must be returned").isNotNull();
+    }}

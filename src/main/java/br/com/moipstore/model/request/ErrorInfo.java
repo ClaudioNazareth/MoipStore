@@ -1,4 +1,4 @@
-package br.com.moipstore.rest.controller;
+package br.com.moipstore.model.request;
 
 
 public class ErrorInfo {

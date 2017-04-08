@@ -14,6 +14,8 @@ public class Order {
     @Id
     private String id;
 
+    private String code;
+
     @NotNull
     private Integer amount;
 
@@ -25,6 +27,7 @@ public class Order {
 
     public Order(String id, Integer amount, List<Item> items, Customer customer) {
         this.id = id;
+        this.code = id;
         this.amount = amount;
         this.items = items;
         this.customer = customer;
@@ -62,14 +65,21 @@ public class Order {
         this.customer = customer;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Order{");
-            sb.append("id='").append(id).append('\'');
-            sb.append(", amount=").append(amount);
-            sb.append(", items=").append(items);
-            sb.append(", customer=").append(customer);
-            sb.append('}');
-        return sb.toString();
+        return "Order{" +
+                "code='" + code + '\'' +
+                ", amount=" + amount +
+                ", items=" + items +
+                ", customer=" + customer +
+                '}';
     }
 }

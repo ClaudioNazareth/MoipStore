@@ -10,6 +10,7 @@ import br.com.moipstore.model.Product;
 import br.com.moipstore.model.request.ItemDomain;
 import br.com.moipstore.model.request.OrderDomain;
 import br.com.moipstore.model.request.PaymentDomain;
+import br.com.moipstore.repository.PaymentRepository;
 import br.com.moipstore.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,41 @@ import java.util.List;
 public class PaymentServiceImpl implements PaymentService {
 
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
+
+    @Autowired
+    private PaymentRepository paymentRepository;
+
+    @Override
+    public Payment createPayment(PaymentDomain paymentRequest) {
+        API api = getMoipApi();
+
+        br.com.moip.resource.Payment createdPayment = api.payment().create(
+                new br.com.moip.request.PaymentRequest()
+                        .orderId(paymentRequest.getOrderId())
+                        .installmentCount(1)
+                        .fundingInstrument(new FundingInstrumentRequest()
+                                .creditCard(createCreditCardRequest(paymentRequest)))
+        );
+        Payment payment = new Payment(createdPayment.getId(), createdPayment.getStatus().getDescription(), new BigDecimal(createdPayment.getAmount().getTotal()));
+        paymentRepository.save(payment);
+
+        return payment;
+    }
+
+    private CreditCardRequest createCreditCardRequest(PaymentDomain paymentRequest) {
+        return new CreditCardRequest()
+                .hash(paymentRequest.getCreditCardHash())
+                .holder(new HolderRequest()
+                                .fullname(paymentRequest.getHolderDomain().getFullName())
+                                .birthdate(paymentRequest.getHolderDomain().getBirthDate())
+                                .phone(new PhoneRequest()
+                                           .setAreaCode(paymentRequest.getHolderDomain().getPhoneAreaCode())
+                                           .setNumber(paymentRequest.getHolderDomain().getPhoneNumber())
+                                )
+                                .taxDocument(TaxDocumentRequest.cpf(paymentRequest.getHolderDomain().getTaxDocument()))
+                );
+    }
 
     @Override
     public Integer calculateAmount(List<ItemDomain> items, int numberOfInstallments, boolean shouldApplyCoupon) {
@@ -39,35 +74,6 @@ public class PaymentServiceImpl implements PaymentService {
         }
         //Loses accuracy from 2 decimal place
         return (int) amount;
-    }
-
-    @Override
-    public Payment createPayment(PaymentDomain paymentRequest) {
-        API api = getMoipApi();
-
-        br.com.moip.resource.Payment createdPayment = api.payment().create(
-                new br.com.moip.request.PaymentRequest()
-                        .orderId(paymentRequest.getOrderId())
-                        .installmentCount(1)
-                        .fundingInstrument(new FundingInstrumentRequest()
-                                .creditCard(createCreditCardRequest(paymentRequest)))
-        );
-
-        return new Payment(createdPayment.getId(), createdPayment.getStatus().getDescription(), new BigDecimal(createdPayment.getAmount().getTotal()));
-    }
-
-    private CreditCardRequest createCreditCardRequest(PaymentDomain paymentRequest) {
-        return new CreditCardRequest()
-                .hash(paymentRequest.getCreditCardHash())
-                .holder(new HolderRequest()
-                                .fullname(paymentRequest.getHolderDomain().getFullName())
-                                .birthdate(paymentRequest.getHolderDomain().getBirthDate())
-                                .phone(new PhoneRequest()
-                                           .setAreaCode(paymentRequest.getHolderDomain().getPhoneAreaCode())
-                                           .setNumber(paymentRequest.getHolderDomain().getPhoneNumber())
-                                )
-                                .taxDocument(TaxDocumentRequest.cpf(paymentRequest.getHolderDomain().getTaxDocument()))
-                );
     }
 
     private API getMoipApi() {

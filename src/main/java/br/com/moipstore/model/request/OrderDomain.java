@@ -7,7 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 
-@ApiModel(value="OrderDomain", description="Represents the data that will be received in the API to create an order")
+@ApiModel(value="OrderDomain", description="Represents the Order data that will be received by the server in the Rest API")
 public class OrderDomain {
 
     @ApiModelProperty(value = "CustomerId in the dataBase",dataType = "string", required = true)

@@ -1,12 +1,24 @@
 package br.com.moipstore.model.request;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+@ApiModel(value="HolderDomain", description="Represents the cardholder data that will be received by the server in the Rest API")
 public class HolderDomain {
 
+    @ApiModelProperty(value = "Full name",dataType = "string", required = true)
     private String fullName;
+
+    @ApiModelProperty(value = "Birth Date",dataType = "string", required = true, example = "1983-10-10")
     private String birthDate;
+
+    @ApiModelProperty(value = "Phone area code",dataType = "string", required = true, example = "457")
     private String phoneAreaCode;
+
+    @ApiModelProperty(value = "Phone number",dataType = "string", required = true, example = "4587-7841")
     private String phoneNumber;
+
+    @ApiModelProperty(value = "Cardholder main document",dataType = "string", required = true, example = "222.222.222-94")
     private String taxDocument;
 
     public String getFullName() {

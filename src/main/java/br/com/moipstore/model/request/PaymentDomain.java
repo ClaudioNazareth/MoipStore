@@ -1,10 +1,18 @@
 package br.com.moipstore.model.request;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+@ApiModel(value="PaymentDomain", description="Represents the Pay,emt data that will be received by the server in the Rest API")
 public class PaymentDomain {
 
+    @ApiModelProperty(value = "Order identifier",dataType = "string", required = true)
     private String orderId;
+
+    @ApiModelProperty(value = "Hash generated with card data",dataType = "string", required = true)
     private String creditCardHash;
+
+    @ApiModelProperty(value = "Credit Card Holder", dataType = "object", required = true)
     private HolderDomain holderDomain;
 
 

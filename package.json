@@ -1,0 +1,31 @@
+{
+  "name": "moipstore",
+  "version": "1.0.0",
+  "description": "Moips Store App",
+  "main": "index.js",
+  "dependencies": {
+    "karma": "^1.6.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-jasmine": "^1.1.0"
+  },
+  "devDependencies": {
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.6.0",
+    "karma-browserify": "^5.1.1",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-jasmine": "^1.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClaudioNazareth/MoipStore.git"
+  },
+  "author": "Claudio Nazareth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ClaudioNazareth/MoipStore/issues"
+  },
+  "homepage": "https://github.com/ClaudioNazareth/MoipStore#readme"
+}

@@ -4,7 +4,7 @@ package br.com.moipstore.model.request;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(value="ItemDomain", description="Represents the data that will be received in the API an Item")
+@ApiModel(value="ItemDomain", description="Represents the Item data that will be received by the server in the Rest API")
 public class ItemDomain {
 
     @ApiModelProperty(value = "Product code",dataType = "string", required = true)
