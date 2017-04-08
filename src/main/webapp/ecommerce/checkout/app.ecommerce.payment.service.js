@@ -11,9 +11,9 @@
     angular.module('moipstore.ecommerce.checkout')
         .factory('EcommercePaymentService', EcommercePaymentService);
 
-    EcommercePaymentService.$inject = ['$http', 'LocalStorageService'];
+    EcommercePaymentService.$inject = ['$http', '$log' ,'LocalStorageService'];
 
-    function EcommercePaymentService($http, LocalStorageService) {
+    function EcommercePaymentService($http, $log , LocalStorageService) {
 
         var service = {
             createPayment : createPayment,
@@ -35,16 +35,25 @@
                 .catch(getError);
 
             function returnSuccess(response) {
+                LocalStorageService.cleanData('selected-products');
                 return response;
             }
 
             function getError(error) {
-                //Implementar looger
-                return response;
+                $log.error("Error creating payment");
+                return error;
             }
         }
 
-        function calculateAmount(selectedProducts, shouldApplyCoupon) {
+        /**
+         * Calculate the total value in JS to avoid requests on the server
+         * @param selectedProducts
+         * @param shouldApplyCoupon
+         * @param numberOfInstallments
+         * @returns {number}
+         */
+        function calculateAmount(selectedProducts, shouldApplyCoupon, numberOfInstallments) {
+
             LocalStorageService.storeData('selected-products', selectedProducts);
             service.selectedProducts =  selectedProducts;
             var amount = 0;

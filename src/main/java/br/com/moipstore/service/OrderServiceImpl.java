@@ -43,7 +43,11 @@ public class OrderServiceImpl implements OrderService {
         Customer customer = customerRepository.findOne(orderDomain.getCustomerId());
 
         br.com.moip.resource.Order createdOrder = api.order().create(createMoipOrderRequest(customer, orderDomain));
-        final Order order = new Order(createdOrder.getId(), paymentService.calculateAmount(orderDomain), createItems(createdOrder), customer);
+
+        //Only for tests purpose , in real world the coupon must be validate first
+        boolean shouldApplyCoupon = orderDomain.getCoupon() != null ? true : false;
+
+        final Order order = new Order(createdOrder.getId(), paymentService.calculateAmount(orderDomain.getItems(), orderDomain.getNumberOfInstallments(), shouldApplyCoupon), createItems(createdOrder), customer);
         return orderRepository.save(order);
     }
 

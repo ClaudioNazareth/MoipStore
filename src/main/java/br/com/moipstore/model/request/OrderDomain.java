@@ -1,13 +1,23 @@
 package br.com.moipstore.model.request;
 
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@ApiModel(value="OrderDomain", description="Represents the data that will be received in the API to create an order")
 public class OrderDomain {
 
+    @ApiModelProperty(value = "CustomerId in the dataBase",dataType = "string", required = true)
     private String customerId;
-    private final List<ItemDomain> items = new ArrayList<>();
+
+    @ApiModelProperty(value = "List of items that will be purchased", required = true)
+    private List<ItemDomain> items = new ArrayList<>();
+
+    private int numberOfInstallments;
+    private String coupon;
 
     public String getCustomerId() {
         return customerId;
@@ -21,12 +31,23 @@ public class OrderDomain {
         return items;
     }
 
-    @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer("OrderDomain{");
-        sb.append("items=").append(items);
-        sb.append(", customerId='").append(customerId).append('\'');
-        sb.append('}');
-        return sb.toString();
+    public void setItems(List<ItemDomain> items) {
+        this.items = items;
+    }
+
+    public int getNumberOfInstallments() {
+        return numberOfInstallments;
+    }
+
+    public void setNumberOfInstallments(int numberOfInstallments) {
+        this.numberOfInstallments = numberOfInstallments;
+    }
+
+    public String getCoupon() {
+        return coupon;
+    }
+
+    public void setCoupon(String coupon) {
+        this.coupon = coupon;
     }
 }

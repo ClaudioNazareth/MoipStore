@@ -7,6 +7,7 @@ public class PaymentDomain {
     private String creditCardHash;
     private HolderDomain holderDomain;
 
+
     public String getOrderId() {
         return orderId;
     }
@@ -30,4 +31,5 @@ public class PaymentDomain {
     public void setHolderDomain(HolderDomain holderDomain) {
         this.holderDomain = holderDomain;
     }
+
 }

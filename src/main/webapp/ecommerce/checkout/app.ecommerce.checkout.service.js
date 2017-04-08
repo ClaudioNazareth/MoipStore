@@ -37,7 +37,8 @@
                 return response;
             }
             function getError(error) {
-                //Implementar looger
+                $log.error("Error creating order");
+                return error;
             }
         }
     }

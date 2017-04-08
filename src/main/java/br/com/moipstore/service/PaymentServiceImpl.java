@@ -6,18 +6,39 @@ import br.com.moip.authentication.Authentication;
 import br.com.moip.authentication.BasicAuth;
 import br.com.moip.request.*;
 import br.com.moipstore.model.Payment;
+import br.com.moipstore.model.Product;
+import br.com.moipstore.model.request.ItemDomain;
 import br.com.moipstore.model.request.OrderDomain;
 import br.com.moipstore.model.request.PaymentDomain;
+import br.com.moipstore.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
-    
+
+    @Autowired
+    ProductRepository productRepository;
+
     @Override
-    public Integer calculateAmount(OrderDomain orderDomain) {
-        return null;
+    public Integer calculateAmount(List<ItemDomain> items, int numberOfInstallments, boolean shouldApplyCoupon) {
+        double amount = 0;
+        for (ItemDomain item : items) {
+            Product product = productRepository.findOne(item.getProductCode());
+            amount += (product.getPrice() * item.getQuantity());
+        }
+        if (shouldApplyCoupon){
+            amount *= 0.95;
+
+        }
+        if(numberOfInstallments > 1){
+            amount *= 1.025 ;
+        }
+        //Loses accuracy from 2 decimal place
+        return (int) amount;
     }
 
     @Override

@@ -143,7 +143,7 @@
                                         </p>
                                     </div>
                                     <div class="col-md-8">
-                                        <form role="form" id="payment-form">
+                                        <form role="form" id="payment-form" ng-submit="ctrl.makePayment()">
                                             <div class="row">
                                                 <div class="col-xs-12">
                                                     <div class="form-group">
@@ -188,7 +188,7 @@
                                                     <div class="form-group">
                                                         <label>INSTALLMENTS</label>
                                                         <div>
-                                                            <select chosen id="installment" class="chosen-select"  tabindex="4" ng-model="ctrl.installment" ng-options="item as item.text for item in ctrl.installments">
+                                                            <select chosen id="installment" required class="chosen-select"  name="installment" tabindex="4" ng-model="ctrl.installment" ng-options="item as item.text for item in ctrl.installments">
                                                             </select>
                                                         </div>
                                                     </div>
@@ -197,7 +197,7 @@
                                             <br/>
                                             <div class="row">
                                                 <div class="col-xs-12">
-                                                    <button class="btn btn-primary" ng-click="ctrl.makePayment()">Make a payment!</button>
+                                                    <button class="btn btn-primary" >Make a payment!</button>
                                                 </div>
                                             </div>
                                         </form>

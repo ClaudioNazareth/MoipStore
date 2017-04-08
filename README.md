@@ -1,8 +1,10 @@
 # Moip Interview Project
 
 ## Information
+- During the development period the webhook was not returning the data, although it was configured in the account and added to the return URL. So the webhook was not set up for this example
 - Port :8080
 - To start the application execute the task --> bootRun 
+- For Rest API documentation see /documentation/index.html (EX: http://localhost:8080/documentation/index.html)
 
 ## Technologies and frameworks used and reasons
 
