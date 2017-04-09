@@ -27,9 +27,12 @@ public class PaymentServiceImpl implements PaymentService {
     @Autowired
     private PaymentRepository paymentRepository;
 
+    @Autowired
+    private MoipAPI moipAPI;
+
     @Override
     public Payment createPayment(PaymentDomain paymentRequest) {
-        API api = getMoipApi();
+        API api = moipAPI.getAPI();
 
         br.com.moip.resource.Payment createdPayment = api.payment().create(
                 new br.com.moip.request.PaymentRequest()
@@ -74,13 +77,5 @@ public class PaymentServiceImpl implements PaymentService {
         }
         //Loses accuracy from 2 decimal place
         return (int) amount;
-    }
-
-    private API getMoipApi() {
-        Authentication auth = new BasicAuth("01010101010101010101010101010101", "ABABABABABABABABABABABABABABABABABABABAB");
-
-        Client client = new Client(Client.SANDBOX, auth);
-
-        return new API(client);
     }
 }

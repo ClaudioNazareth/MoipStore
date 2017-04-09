@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.validation.constraints.NotNull;
 
 /**
- * Model to represent  ShippingAddress information and map to mongoDB
+ * Model to represent ShippingAddress information and map to mongoDB
  */
 @Document
 public class ShippingAddress {

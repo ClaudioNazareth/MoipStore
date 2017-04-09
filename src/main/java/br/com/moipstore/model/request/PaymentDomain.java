@@ -40,4 +40,13 @@ public class PaymentDomain {
         this.holderDomain = holderDomain;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("PaymentDomain{");
+            sb.append("orderId='").append(orderId).append('\'');
+            sb.append(", creditCardHash='").append(creditCardHash).append('\'');
+            sb.append(", holderDomain=").append(holderDomain);
+            sb.append('}');
+        return sb.toString();
+    }
 }

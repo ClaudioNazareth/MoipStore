@@ -32,9 +32,9 @@ public class ItemDomain {
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("ItemDomain{");
-        sb.append("productCode='").append(productCode).append('\'');
-        sb.append(", quantity=").append(quantity);
-        sb.append('}');
+            sb.append("productCode='").append(productCode).append('\'');
+            sb.append(", quantity=").append(quantity);
+            sb.append('}');
         return sb.toString();
     }
 }

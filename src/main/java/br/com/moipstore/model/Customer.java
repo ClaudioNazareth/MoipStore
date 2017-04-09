@@ -38,7 +38,6 @@ public class Customer {
     @NotNull
     private Phone phone;
 
-
     public String getId() {
         return id;
     }
@@ -106,14 +105,14 @@ public class Customer {
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Customer{");
-        sb.append("code='").append(code).append('\'');
-        sb.append(", fullName='").append(fullName).append('\'');
-        sb.append(", email='").append(email).append('\'');
-        sb.append(", birthDate=").append(birthDate);
-        sb.append(", taxDocument='").append(taxDocument).append('\'');
-        sb.append(", shippingAddress=").append(shippingAddress);
-        sb.append(", phone=").append(phone);
-        sb.append('}');
+            sb.append("code='").append(code).append('\'');
+            sb.append(", fullName='").append(fullName).append('\'');
+            sb.append(", email='").append(email).append('\'');
+            sb.append(", birthDate=").append(birthDate);
+            sb.append(", taxDocument='").append(taxDocument).append('\'');
+            sb.append(", shippingAddress=").append(shippingAddress);
+            sb.append(", phone=").append(phone);
+            sb.append('}');
         return sb.toString();
     }
 }

@@ -33,6 +33,10 @@ public class Order {
         this.customer = customer;
     }
 
+    Order(){
+
+    }
+
     public String getId() {
         return id;
     }

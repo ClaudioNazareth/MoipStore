@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- * Repository for payment that uses Spring Data Rest MongoBD
+ * Repository for payment that uses Spring Data MongoBD
  * @See http://docs.spring.io/spring-data/data-mongo/docs/current/reference/html
  */
 @Repository

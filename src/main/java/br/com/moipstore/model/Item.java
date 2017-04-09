@@ -32,7 +32,6 @@ public class Item {
     }
 
     Item(){
-
     }
 
     public String getId() {

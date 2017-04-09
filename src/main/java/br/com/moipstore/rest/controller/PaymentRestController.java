@@ -21,6 +21,9 @@ import java.net.URI;
 
 import static org.springframework.http.ResponseEntity.created;
 
+/**
+ * For documentation see /documentation/index.html (EX: https://moip-store.herokuapp.com/documentation/index.html)
+ */
 @RestController
 @RequestMapping("/api/v1/payments")
 @Api(value = "Payment", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE,
@@ -34,7 +37,7 @@ public class PaymentRestController {
     private OrderRepository orderRepository;
 
     @PostMapping
-    @ApiOperation(value = "Create an Payment by OrderId , an Hash of a credit card and CreditCard Hoelder",
+    @ApiOperation(value = "Create an Payment by OrderId , an Hash of a credit card and CreditCard Holder",
             notes = "Create an Payment and return the link of the created Payment",
             response = ResponseEntity.class)
     @ApiResponses(value = {

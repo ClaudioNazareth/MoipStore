@@ -21,6 +21,9 @@ import java.net.URI;
 import static org.springframework.http.ResponseEntity.created;
 import static org.springframework.http.ResponseEntity.status;
 
+/**
+ * For documentation see /documentation/index.html (EX: https://moip-store.herokuapp.com/documentation/index.html)
+ */
 @RestController
 @RequestMapping("/api/v1/orders")
 @Api(value = "Order", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, tags = {"Order API"}, description = "Handle all Order Requests", basePath = "/api/v1/orders")

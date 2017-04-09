@@ -60,4 +60,16 @@ public class HolderDomain {
     public void setTaxDocument(String taxDocument) {
         this.taxDocument = taxDocument;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("HolderDomain{");
+            sb.append("fullName='").append(fullName).append('\'');
+            sb.append(", birthDate='").append(birthDate).append('\'');
+            sb.append(", phoneAreaCode='").append(phoneAreaCode).append('\'');
+            sb.append(", phoneNumber='").append(phoneNumber).append('\'');
+            sb.append(", taxDocument='").append(taxDocument).append('\'');
+            sb.append('}');
+        return sb.toString();
+    }
 }

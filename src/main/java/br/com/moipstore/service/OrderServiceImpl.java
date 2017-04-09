@@ -35,10 +35,13 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private PaymentService paymentService;
 
+    @Autowired
+    private MoipAPI moipAPI;
+
     @Override
     public Order createOrder(OrderDomain orderDomain) {
 
-        API api = getApi();
+        API api = moipAPI.getAPI();
 
         Customer customer = customerRepository.findOne(orderDomain.getCustomerId());
 
@@ -89,14 +92,6 @@ public class OrderServiceImpl implements OrderService {
                         .country(customer.getShippingAddress().getCountry())
                         .zipCode(customer.getShippingAddress().getZipCode())
                 );
-    }
-
-    private API getApi() {
-        Authentication auth = new BasicAuth("01010101010101010101010101010101", "ABABABABABABABABABABABABABABABABABABABAB");
-
-        Client client = new Client(Client.SANDBOX, auth);
-
-        return new API(client);
     }
 
     private String generateOrderOwnId(Customer customer) {

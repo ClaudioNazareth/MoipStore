@@ -50,4 +50,15 @@ public class OrderDomain {
     public void setCoupon(String coupon) {
         this.coupon = coupon;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("OrderDomain{");
+            sb.append("customerId='").append(customerId).append('\'');
+            sb.append(", items=").append(items);
+            sb.append(", numberOfInstallments=").append(numberOfInstallments);
+            sb.append(", coupon='").append(coupon).append('\'');
+            sb.append('}');
+        return sb.toString();
+    }
 }
