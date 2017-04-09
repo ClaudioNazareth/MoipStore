@@ -1,27 +1,36 @@
 // Karma configuration
-// Generated on Sat Apr 08 2017 18:47:26 GMT-0300 (E. South America Standard Time)
+// Generated on Sun Apr 09 2017 00:00:28 GMT-0300 (E. South America Standard Time)
 
 module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-      basePath: '',
-
+    basePath: '',
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
 
 
-
     // list of files / patterns to load in the browser
     files: [
-        '**/*Test.js'
+      '**/angular.js',
+      '**/angular-mocks.js',
+      '**/angular-ui-router.js',
+      '**/ocLazyLoad.js',
+      '**/jquery/*.js',
+      '**/bootstrap.js',
+      '**/core/app.js',
+      '**/product/app.ecommerce.product.module.js',
+      '**/product/app.ecommerce.product.controller.js',
+      '**/product/app.ecommerce.product.controllerTest.js'
     ],
+
 
     // list of files to exclude
     exclude: [
     ],
+
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
@@ -65,4 +74,4 @@ module.exports = function(config) {
     // how many browser should be started simultaneous
     concurrency: Infinity
   })
-};
+}

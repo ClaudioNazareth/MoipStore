@@ -1,7 +1,8 @@
 # Moip Interview Project
 
 ## Information
-- During the development period the webhook was not returning the data, although it was configured in the account and added to the return URL. So the webhook was not set up for this example
+- During the development period the webhook was not returning the data, although it was configured in the account and added to the return URL.
+ So the webhook was not set up for this example
 - Port :8080
 - Deployed on Heroku : https://moip-store.herokuapp.com
 - To start the application execute the task --> bootRun 
@@ -79,17 +80,31 @@ curl -v http://localhost:8080/api
 ```
 
     
-- **MongoDB** -
- 
-- **Spring Data Rest** -     
+- **MongoDB** - _MongoDB is an open-source document database that provides high performance, high availability, and automatic scaling. A record in MongoDB is a document, which is a data structure composed of field and value pairs.
+ MongoDB documents are similar to JSON objects. The values of fields may include other documents, arrays, and arrays of documents. _
+    - Documents (i.e. objects) correspond to native data types in many programming languages.
+    - Embedded documents and arrays reduce need for expensive joins.
+    - Dynamic schema supports fluent polymorphism.
     
-- **AngularJS** -   
+ 
+- **Spring Data Rest** - _Spring Data REST builds on top of Spring Data repositories, analyzes your application’s domain
+ model and exposes hypermedia-driven HTTP resources for aggregates contained in the model._    
+    - Exposes a discoverable REST API for your domain model using HAL as media type.
+    - Exposes collection, item and association resources representing your model.
+    - Supports pagination via navigational links.
+    - Allows to dynamically filter collection resources.
+    - Exposes dedicated search resources for query methods defined in your repositories.
+    
+- **AngularJS** -   _HTML is great for declaring static documents, but it falters when we try to use it for declaring dynamic views in web-applications. 
+AngularJS lets you extend HTML vocabulary for your application. The resulting environment is extraordinarily expressive, readable, and quick to develop._
 
-- **Bootstrap** - 
+- **Bootstrap** - _Bootstrap easily and efficiently scales your websites and applications with a single code base, 
+from phones to tablets to desktops with CSS media queries._
 
-- **Swagger** - 
+- **Swagger** - _Swagger is a powerful open source framework backed by a large ecosystem of tools that helps you design,
+ build, document, and consume your RESTful APIs._
 
-- **Gradle** - 
 
-- **AssertJ** -
+- **AssertJ** - _AssertJ core is a Java library that provides a fluent interface for writing assertions. Its main goal is 
+to improve test code readability and make maintenance of tests easier._
   
