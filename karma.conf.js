@@ -17,13 +17,9 @@ module.exports = function(config) {
       '**/angular.js',
       '**/angular-mocks.js',
       '**/angular-ui-router.js',
-      '**/ocLazyLoad.js',
       '**/jquery/*.js',
       '**/bootstrap.js',
-      '**/core/app.js',
-      '**/product/app.ecommerce.product.module.js',
-      '**/product/app.ecommerce.product.controller.js',
-      '**/product/app.ecommerce.product.controllerTest.js'
+      '**/core/app.js'
     ],
 
 

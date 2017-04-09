@@ -42,7 +42,7 @@ task wrapper (type: Wrapper){
 }
 
 
-//Configuration to deploy on Heroku
+//Configuration to deploy automatic on Heroku
 task copyToLib(type: Copy) {
     doLast {
         into "$buildDir/lib"
